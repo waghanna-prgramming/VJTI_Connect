@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../common/scaffold_key.dart';
 import '../../widgets/domain_card.dart';
+import '../placement_domains.dart';
 
 class CorePlacement extends StatefulWidget {
   const CorePlacement({super.key});
@@ -14,18 +16,30 @@ class _CorePlacementState extends State<CorePlacement> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF1F4F8),
+      key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: Color(0xFFF1F4F8),
         automaticallyImplyLeading: false,
-        actions: [],
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFF14181B),
+            size: 30,
+          ),
+          onPressed: () {
+            print('IconButton pressed ...');
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => PlacementDomains(),),);
+          },
+        ),
         centerTitle: true,
-        title: Text('Core'),
+        title: Text('CORE'),
         titleTextStyle: TextStyle(
           fontFamily: 'Sora',
           color: Color(0xFF14181B),
           fontSize: 36,
           fontWeight: FontWeight.bold,
         ),
+        actions: [],
         elevation: 0,
       ),
       body: Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../common/scaffold_key.dart';
 import '../widgets/domain_card.dart';
 
 class PlacementDomains extends StatefulWidget {
@@ -14,10 +15,21 @@ class _PlacementDomainsState extends State<PlacementDomains> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF1F4F8),
+      key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: Color(0xFFF1F4F8),
         automaticallyImplyLeading: false,
-        actions: [],
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFF14181B),
+            size: 30,
+          ),
+          onPressed: () {
+            print('IconButton pressed ...');
+            Navigator.of(context).pop();
+          },
+        ),
         centerTitle: true,
         title: Text('Select Your Domain'),
         titleTextStyle: TextStyle(
@@ -26,6 +38,7 @@ class _PlacementDomainsState extends State<PlacementDomains> {
           fontSize: 36,
           fontWeight: FontWeight.bold,
         ),
+        actions: [],
         elevation: 0,
       ),
       body: Column(
