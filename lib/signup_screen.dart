@@ -9,11 +9,11 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  TextEditingController textController1 = TextEditingController();
-  TextEditingController textController2 = TextEditingController();
-  TextEditingController textController3 = TextEditingController();
-  TextEditingController textController4 = TextEditingController();
-  TextEditingController textController5 = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _regnoController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _passwordController1 = TextEditingController();
 
   bool passwordVisibility1 = true;
   bool passwordVisibility2 = true;
@@ -22,11 +22,11 @@ class _SignUpState extends State<SignUp> {
 
   @override
   void dispose() {
-    textController1.dispose();
-    textController2.dispose();
-    textController3.dispose();
-    textController4.dispose();
-    textController5.dispose();
+    _nameController.dispose();
+    _regnoController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _passwordController1.dispose();
     super.dispose();
   }
 
@@ -38,15 +38,6 @@ class _SignUpState extends State<SignUp> {
       appBar: AppBar(
         backgroundColor: Color(0xFFF1F4F8),
         automaticallyImplyLeading: false,
-        title: Text(
-          'Student Login',
-          style: TextStyle(
-            fontFamily: 'Inter',
-            color: Color(0xFF14181B),
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
         actions: [],
         centerTitle: false,
         elevation: 0,
@@ -125,7 +116,7 @@ class _SignUpState extends State<SignUp> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0, 0, 0, 16),
                             child: TextFormField(
-                              controller: textController1,
+                              controller: _nameController,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'Student Name',
@@ -139,7 +130,7 @@ class _SignUpState extends State<SignUp> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0, 0, 0, 16),
                             child: TextFormField(
-                              controller: textController2,
+                              controller: _regnoController,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'Registration No.',
@@ -152,7 +143,7 @@ class _SignUpState extends State<SignUp> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0, 0, 0, 16),
                             child: TextFormField(
-                              controller: textController3,
+                              controller: _emailController,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'Email ID',
@@ -165,7 +156,7 @@ class _SignUpState extends State<SignUp> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0, 0, 0, 16),
                             child: TextFormField(
-                              controller: textController4,
+                              controller: _passwordController,
                               obscureText: passwordVisibility1,
                               decoration: InputDecoration(
                                 labelText: 'Password',
@@ -194,7 +185,7 @@ class _SignUpState extends State<SignUp> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0, 0, 0, 16),
                             child: TextFormField(
-                              controller: textController5,
+                              controller: _passwordController1,
                               obscureText: passwordVisibility2,
                               decoration: InputDecoration(
                                 labelText: 'Confirm Password',

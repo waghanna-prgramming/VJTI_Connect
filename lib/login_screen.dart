@@ -1,3 +1,4 @@
+import 'package:demo_connect/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'home_screen.dart';
@@ -34,25 +35,6 @@ class _LoginScreenState extends State<LoginScreen> {
         appBar: AppBar(
           backgroundColor: Color(0xFFF1F4F8),
           automaticallyImplyLeading: false,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Color(0xFF14181B),
-              size: 30,
-            ),
-            onPressed: () {
-              print('IconButton pressed ...');
-            },
-          ),
-          title: Text(
-            'Student Login',
-            style: TextStyle(
-              fontFamily: 'Inter',
-              color: Color(0xFF14181B),
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
           actions: [],
           centerTitle: false,
           elevation: 0,
@@ -179,6 +161,33 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: Text('Log In'),
                                 // Add other button properties as needed
                               ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  child: const Text(
+                                    'Dont have an account?',
+                                  ),
+                                  padding: const EdgeInsets.symmetric(vertical: 8),
+                                ),
+                                GestureDetector(
+                                  onTap: () => Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => const SignUp(),
+                                    ),
+                                  ),
+                                  child: Container(
+                                    child: const Text(
+                                      ' Signup.',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    padding: const EdgeInsets.symmetric(vertical: 8),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
