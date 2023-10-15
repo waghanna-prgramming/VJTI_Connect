@@ -1,3 +1,5 @@
+import 'package:demo_connect/home_screen.dart';
+import 'package:demo_connect/resources/auth_methods.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
@@ -14,7 +16,7 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _passwordController1 = TextEditingController();
-
+  bool _isLoading = false;
   bool passwordVisibility1 = true;
   bool passwordVisibility2 = true;
 
@@ -22,12 +24,46 @@ class _SignUpState extends State<SignUp> {
 
   @override
   void dispose() {
+    super.dispose();
     _nameController.dispose();
     _regnoController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _passwordController1.dispose();
-    super.dispose();
+    // super.dispose();
+  }
+
+  void signUpUser() async {
+    // set loading to true
+    setState(() {
+      _isLoading = true;
+    });
+
+    // signup user using our authmethodds
+    String res = await AuthMethods().signUpUser(
+      email: _emailController.text,
+      password: _passwordController.text,
+      username: _nameController.text,
+      regno: _regnoController.text,
+    ); //
+    // if string returned is success, user has been created
+    if (res == "success") {
+      setState(() {
+        _isLoading = false;
+      });
+      // navigate to the home screen
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(),
+        ),
+      );
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+      // show the error
+      // showSnackBar(context, res);
+    }
   }
 
   @override
@@ -46,9 +82,9 @@ class _SignUpState extends State<SignUp> {
         top: true,
         child: Align(
           alignment: AlignmentDirectional(0.00, 0.00),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
+            // mainAxisSize: MainAxisSize.max,
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
@@ -99,8 +135,8 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0, 12, 0, 24),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 12, 0, 24),
                             child: Text(
                               'Enter your details below to log in.',
                               textAlign: TextAlign.start,
@@ -113,8 +149,8 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0, 0, 0, 16),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                             child: TextFormField(
                               controller: _nameController,
                               obscureText: false,
@@ -127,8 +163,8 @@ class _SignUpState extends State<SignUp> {
                           ),
                           // Add other form fields similarly
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0, 0, 0, 16),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                             child: TextFormField(
                               controller: _regnoController,
                               obscureText: false,
@@ -140,8 +176,8 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0, 0, 0, 16),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                             child: TextFormField(
                               controller: _emailController,
                               obscureText: false,
@@ -153,8 +189,8 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0, 0, 0, 16),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                             child: TextFormField(
                               controller: _passwordController,
                               obscureText: passwordVisibility1,
@@ -165,7 +201,7 @@ class _SignUpState extends State<SignUp> {
                                   onTap: () {
                                     setState(() {
                                       passwordVisibility1 =
-                                      !passwordVisibility1;
+                                          !passwordVisibility1;
                                     });
                                   },
                                   child: Icon(
@@ -182,8 +218,8 @@ class _SignUpState extends State<SignUp> {
                           ),
                           // ...
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0, 0, 0, 16),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                             child: TextFormField(
                               controller: _passwordController1,
                               obscureText: passwordVisibility2,
@@ -194,7 +230,7 @@ class _SignUpState extends State<SignUp> {
                                   onTap: () {
                                     setState(() {
                                       passwordVisibility2 =
-                                      !passwordVisibility2;
+                                          !passwordVisibility2;
                                     });
                                   },
                                   child: Icon(
@@ -210,13 +246,20 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0, 0, 0, 16),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                             child: ElevatedButton(
                               onPressed: () {
+                                signUpUser();
                                 print('Button pressed ...');
                               },
-                              child: Text('Sign Up'),
+                              child: !_isLoading
+                                  ? const Text(
+                                      'Sign up',
+                                    )
+                                  : const CircularProgressIndicator(
+                                      color: Colors.white,
+                                    ),
                               // Add other button properties as needed
                             ),
                           ),
@@ -227,10 +270,16 @@ class _SignUpState extends State<SignUp> {
                                 child: const Text(
                                   'Already have an account?',
                                 ),
-                                padding: const EdgeInsets.symmetric(vertical: 8),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8),
                               ),
                               GestureDetector(
-                                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(),),),
+                                onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginScreen(),
+                                  ),
+                                ),
                                 child: Container(
                                   child: const Text(
                                     ' Login.',
@@ -238,7 +287,8 @@ class _SignUpState extends State<SignUp> {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  padding: const EdgeInsets.symmetric(vertical: 8),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8),
                                 ),
                               ),
                             ],

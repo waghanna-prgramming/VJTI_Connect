@@ -18,7 +18,7 @@ class AuthMethods {
 
   Future<String> signUpUser({
     required String username,
-    required int regno,
+    required String regno,
     required String email,
     required String password,
   }) async {
@@ -27,14 +27,14 @@ class AuthMethods {
       if (email.isNotEmpty ||
           password.isNotEmpty ||
           username.isNotEmpty ||
-          regno != null) {
+          regno.isNotEmpty) {
         // registering user in auth with email and password
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
 
-        model.User _user = model.User(
+        model.User user = model.User(
           username: username,
           regno: regno,
           email: email,
@@ -45,7 +45,7 @@ class AuthMethods {
         await _firestore
             .collection("users")
             .doc(cred.user!.uid)
-            .set(_user.toJson());
+            .set(user.toJson());
 
         res = "success";
       } else {
@@ -65,7 +65,7 @@ class AuthMethods {
     try {
       if (email.isNotEmpty || password.isNotEmpty) {
         // logging in user with email and password
-        await _auth.sign(
+        await _auth.signInWithEmailAndPassword(
           email: email,
           password: password,
         );

@@ -1,5 +1,7 @@
+import 'package:demo_connect/resources/auth_methods.dart';
 import 'package:demo_connect/signup_screen.dart';
 import 'package:flutter/material.dart';
+// import 'package:js/js_util.dart';
 
 import 'home_screen.dart';
 
@@ -11,18 +13,41 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController textController1 = TextEditingController();
-  TextEditingController textController2 = TextEditingController();
-
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  bool _isLoading = false;
   bool passwordVisibility1 = true;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void dispose() {
-    textController1.dispose();
-    textController2.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
+  }
+
+  void loginUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String res = await AuthMethods().loginUser(
+        email: _emailController.text, password: _passwordController.text);
+    if (res == 'success') {
+      setState(() {
+        _isLoading = false;
+      });
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(),
+        ),
+      );
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+      // showSnackBar(context, res);
+    }
   }
 
   @override
@@ -114,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0, 0, 0, 16),
                               child: TextFormField(
-                                controller: textController2,
+                                controller: _emailController,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: 'Registration No.',
@@ -128,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0, 0, 0, 16),
                               child: TextFormField(
-                                controller: textController2,
+                                controller: _passwordController,
                                 obscureText: passwordVisibility1,
                                 decoration: InputDecoration(
                                   labelText: 'Password',
@@ -158,7 +183,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   0, 0, 0, 16),
                               child: ElevatedButton(
                                 onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),),),
-                                child: Text('Log In'),
+                                child: !_isLoading
+                                    ? const Text(
+                                  'Log in',
+                                )
+                                    : const CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
                                 // Add other button properties as needed
                               ),
                             ),
