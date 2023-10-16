@@ -1,21 +1,22 @@
 import 'package:demo_connect/home_screen.dart';
-import 'package:demo_connect/internships/intern_consult/internship_consulting.dart';
-import 'package:demo_connect/internships/intern_core/internship_core.dart';
-import 'package:demo_connect/internships/intern_data/internship_data.dart';
-import 'package:demo_connect/internships/intern_tech/internship_tech.dart';
+import 'package:demo_connect/screens/category_page.dart';
 import 'package:flutter/material.dart';
+
 import '../common/scaffold_key.dart';
 import '../widgets/domain_card.dart';
-import 'intern_finance&mgmt/internship_fnm.dart';
 
-class InternshipDomains extends StatefulWidget {
-  const InternshipDomains({super.key});
+class DomainPage extends StatefulWidget {
+  // internship/placement
+  final String drive;
+  const DomainPage({required this.drive});
 
   @override
-  State<InternshipDomains> createState() => _InternshipDomainsState();
+  State<DomainPage> createState() => _DomainPageState();
 }
 
-class _InternshipDomainsState extends State<InternshipDomains> {
+class _DomainPageState extends State<DomainPage> {
+  // get drive => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,13 +62,17 @@ class _InternshipDomainsState extends State<InternshipDomains> {
                 size: Size(20.0, 15.0),
               ),
               GestureDetector(
-                child: Domains(
+                child: DomainCard(
                   domainName: 'IT/Tech',
                 ),
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TechInternship(),
+                    builder: (context) => CategoryPage(
+                      drive: widget.drive,
+                      domain: 'IT-SoftwareDevelopment',
+                      title: 'IT/TECH',
+                    ),
                   ),
                 ),
               ),
@@ -75,13 +80,17 @@ class _InternshipDomainsState extends State<InternshipDomains> {
                 size: Size(20.0, 15.0),
               ),
               GestureDetector(
-                child: Domains(
+                child: DomainCard(
                   domainName: 'Data Science',
                 ),
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DataInternship(),
+                    builder: (context) => CategoryPage(
+                      drive: widget.drive,
+                      domain: 'AnalyticsAndDataScience',
+                      title: 'DATA SCIENCE',
+                    ),
                   ),
                 ),
               ),
@@ -89,13 +98,17 @@ class _InternshipDomainsState extends State<InternshipDomains> {
                 size: Size(20.0, 15.0),
               ),
               GestureDetector(
-                child: Domains(
+                child: DomainCard(
                   domainName: 'Consulting',
                 ),
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ConsultingInternship(),
+                    builder: (context) => CategoryPage(
+                      drive: widget.drive,
+                      domain: 'Consulting',
+                      title: 'CONSULTING',
+                    ),
                   ),
                 ),
               ),
@@ -103,11 +116,15 @@ class _InternshipDomainsState extends State<InternshipDomains> {
                 size: Size(20.0, 15.0),
               ),
               GestureDetector(
-                child: Domains(domainName: 'Core'),
+                child: DomainCard(domainName: 'Core'),
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CoreInternship(),
+                    builder: (context) => CategoryPage(
+                      drive: widget.drive,
+                      domain: 'Core',
+                      title: 'CORE',
+                    ),
                   ),
                 ),
               ),
@@ -115,24 +132,42 @@ class _InternshipDomainsState extends State<InternshipDomains> {
                 size: Size(20.0, 15.0),
               ),
               GestureDetector(
-                child: Domains(
+                child: DomainCard(
                   domainName: 'Finance and Management',
                 ),
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => FnMInternship(),
+                    builder: (context) => CategoryPage(
+                      drive: widget.drive,
+                      domain: 'Management',
+                      title: 'FINANCE & MGMT',
+                    ),
                   ),
                 ),
               ),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              Domains(domainName: 'Post Graduation'),
+              GestureDetector(
+                child: DomainCard(
+                  domainName: 'Post Graduation',
+                ),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CategoryPage(
+                      drive: widget.drive,
+                      domain: 'Research',
+                      title: 'POST GRADUATION',
+                    ),
+                  ),
+                ),
+              ),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              Domains(domainName: 'Post Graduation'),
+              DomainCard(domainName: 'Others'),
             ],
           ),
         ],

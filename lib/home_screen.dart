@@ -1,7 +1,6 @@
-import 'package:demo_connect/internships/internship_domains.dart';
-import 'package:demo_connect/placements/placement_domains.dart';
+import 'package:demo_connect/screens/domain_page.dart';
 import 'package:demo_connect/widgets/homescreen_cards.dart';
-import 'package:flutter/material.dart';
+// import 'package:demo_connect/widgets/homescreen_cardsrial.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -82,7 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => InternshipDomains(),
+                                builder: (context) =>
+                                    DomainPage(drive: 'internships'),
                               ),
                             ),
                           ),
@@ -99,7 +99,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => PlacementDomains(),
+                                builder: (context) =>
+                                    DomainPage(drive: 'placements'),
                               ),
                             ),
                           ),

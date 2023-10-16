@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Domains extends StatelessWidget {
+class DomainCard extends StatelessWidget {
   String domainName = '';
-  Domains({required this.domainName});
+  DomainCard({required this.domainName});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,7 @@ class Domains extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
-          padding:
-          EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
+          padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
           child: Text(
             '$domainName',
             textAlign: TextAlign.center,

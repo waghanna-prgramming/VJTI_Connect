@@ -1,31 +1,51 @@
+import 'package:demo_connect/screens/domain_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../common/scaffold_key.dart';
 import '../../widgets/domain_card.dart';
 
-class ConsultingInternship extends StatefulWidget {
-  const ConsultingInternship({super.key});
+class CategoryPage extends StatefulWidget {
+  final String domain, drive, title;
+  const CategoryPage(
+      {required this.drive, required this.domain, required this.title});
 
   @override
-  State<ConsultingInternship> createState() => _ConsultingInternshipState();
+  State<CategoryPage> createState() => _CategoryPageState();
 }
 
-class _ConsultingInternshipState extends State<ConsultingInternship> {
+class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF1F4F8),
+      key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: Color(0xFFF1F4F8),
         automaticallyImplyLeading: false,
-        actions: [],
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: Color(0xFF14181B),
+            size: 30,
+          ),
+          onPressed: () {
+            print('IconButton pressed ...');
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (context) => DomainPage(drive: widget.drive),
+              ),
+            );
+          },
+        ),
         centerTitle: true,
-        title: Text('Consulting'),
+        title: Text(widget.title),
         titleTextStyle: TextStyle(
           fontFamily: 'Sora',
           color: Color(0xFF14181B),
           fontSize: 36,
           fontWeight: FontWeight.bold,
         ),
+        actions: [],
         elevation: 0,
       ),
       body: Column(
@@ -38,31 +58,31 @@ class _ConsultingInternshipState extends State<ConsultingInternship> {
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              Domains(domainName: 'Resume Repository'),
+              DomainCard(domainName: 'Resume Repository'),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              Domains(domainName: 'Interview Experiences'),
+              DomainCard(domainName: 'Interview Experiences'),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              Domains(domainName: 'Preparation Material'),
+              DomainCard(domainName: 'Preparation Material'),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              Domains(domainName: 'Important Courses'),
+              DomainCard(domainName: 'Important Courses'),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              Domains(domainName: 'Other Aspects'),
+              DomainCard(domainName: 'Other Aspects'),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              Domains(domainName: 'General Tips'),
+              DomainCard(domainName: 'General Tips'),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              Domains(domainName: 'Companies at VJTI'),
+              DomainCard(domainName: 'Companies at VJTI'),
             ],
           ),
         ],
