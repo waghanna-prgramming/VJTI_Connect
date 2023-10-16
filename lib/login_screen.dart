@@ -68,9 +68,9 @@ class _LoginScreenState extends State<LoginScreen> {
           top: true,
           child: Align(
             alignment: AlignmentDirectional(0.00, 0.00),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
+              // mainAxisSize: MainAxisSize.max,
+              // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
@@ -142,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 controller: _emailController,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'Registration No.',
+                                  labelText: 'Email',
                                   // Add other properties as needed
                                 ),
                                 // Add validator as needed
@@ -172,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       color: Color(0xFF677681),
                                       size: 22,
                                     ),
-                                  ),
+                                  )
                                 ),
                                 // Add validator as needed
                               ),
@@ -182,7 +182,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0, 0, 0, 16),
                               child: ElevatedButton(
-                                onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),),),
+                                onPressed: () {
+                                  loginUser();
+                                  print("Button Pressed...");
+                                },
                                 child: !_isLoading
                                     ? const Text(
                                   'Log in',

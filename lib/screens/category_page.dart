@@ -1,3 +1,4 @@
+import 'package:demo_connect/internships/reume_repo.dart';
 import 'package:demo_connect/screens/domain_page.dart';
 import 'package:flutter/material.dart';
 
@@ -58,7 +59,21 @@ class _CategoryPageState extends State<CategoryPage> {
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              DomainCard(domainName: 'Resume Repository'),
+              GestureDetector(
+                child: DomainCard(
+                  domainName: 'Resume',
+                ),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResumeRepository(
+                      drive: widget.drive,
+                      domain: 'IT-SoftwareDevelopment',
+                      title: 'IT/TECH',
+                    ),
+                  ),
+                ),
+              ),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
