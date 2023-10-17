@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:demo_connect/widgets/domain_card.dart';
 import 'package:flutter/material.dart';
 
 class ResumePage extends StatefulWidget {
@@ -8,7 +9,13 @@ class ResumePage extends StatefulWidget {
 
 class _ResumePageState extends State<ResumePage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  List<String> years = ['2022', '2023']; // Add more years as needed
+  List<String> years = [
+    '2019',
+    '2020',
+    '2021',
+    '2022',
+    '2023'
+  ]; // Add more years as needed
   Map<String, List<DocumentSnapshot>> dataMap = {};
 
   @override
@@ -18,11 +25,11 @@ class _ResumePageState extends State<ResumePage> {
   }
 
   void fetchData() async {
-    for (String year in years) {
-      QuerySnapshot querySnapshot = await _firestore.collection(year).get();
-      List<DocumentSnapshot> documents = querySnapshot.docs;
-      dataMap[year] = documents;
-    }
+    // for (String year in years) {
+    //   QuerySnapshot querySnapshot = await _firestore.collection(year).get();
+    //   List<DocumentSnapshot> documents = querySnapshot.docs;
+    //   dataMap[year] = documents;
+    // }
     // QuerySnapshot querySnapshot = await _firestore.listCollections();
     // for (var collection in querySnapshot.docs) {
     //   String year = collection.id;
@@ -61,11 +68,12 @@ class _ResumePageState extends State<ResumePage> {
                 itemBuilder: (context, docIndex) {
                   // Implement the UI for each document here
                   // Use InkWell or GestureDetector for clickable links
-                  return ListTile(
-                    title: Text(documents[docIndex]['name']),
-                    onTap: () {
-                      // Implement the functionality to show the PDF here
-                    },
+                  return DomainCard(
+                    domainName: documents[docIndex]['name'],
+                    // title: Text(documents[docIndex]['name']),
+                    // onTap: () {
+                    // Implement the functionality to show the PDF here
+                    // },
                   );
                 },
               ),

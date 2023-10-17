@@ -81,8 +81,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    DomainPage(drive: 'internships'),
+                                builder: (context) => DomainPage(
+                                  drive: 'internships',
+                                  driveID: 'jt4whg5R0mxaJVbAphVd',
+                                ),
                               ),
                             ),
                           ),
@@ -99,8 +101,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>
-                                    DomainPage(drive: 'placements'),
+                                builder: (context) => DomainPage(
+                                    drive: 'placements',
+                                    driveID:
+                                        'to be made'), //TODO: Add drive ID for placements
                               ),
                             ),
                           ),

@@ -8,7 +8,8 @@ import '../widgets/domain_card.dart';
 class DomainPage extends StatefulWidget {
   // internship/placement
   final String drive;
-  const DomainPage({required this.drive});
+  final String driveID;
+  const DomainPage({required this.drive, required this.driveID});
 
   @override
   State<DomainPage> createState() => _DomainPageState();
@@ -62,108 +63,144 @@ class _DomainPageState extends State<DomainPage> {
                 size: Size(20.0, 15.0),
               ),
               GestureDetector(
-                child: DomainCard(
-                  domainName: 'IT/Tech',
-                ),
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CategoryPage(
-                      drive: widget.drive,
-                      domain: 'IT-SoftwareDevelopment',
-                      title: 'IT/TECH',
-                    ),
+                  child: DomainCard(
+                    domainName: 'IT/Tech',
                   ),
-                ),
-              ),
+                  onTap: () {
+                    String domainID = widget.driveID == 'jt4whg5R0mxaJVbAphVd'
+                        ? 'rVPe8JohuK1U9vvNeEDp'
+                        : 'to be made'; //TODO: add the domain id for placement
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CategoryPage(
+                          drive: widget.drive,
+                          driveID: widget.driveID,
+                          domain: 'IT-SoftwareDevelopment',
+                          title: 'IT/TECH',
+                          domainID: domainID,
+                        ),
+                      ),
+                    );
+                  }),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
               GestureDetector(
-                child: DomainCard(
-                  domainName: 'Data Science',
-                ),
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CategoryPage(
-                      drive: widget.drive,
-                      domain: 'AnalyticsAndDataScience',
-                      title: 'DATA SCIENCE',
-                    ),
+                  child: DomainCard(
+                    domainName: 'Data Science',
                   ),
-                ),
-              ),
+                  onTap: () {
+                    String domainID = widget.driveID == 'jt4whg5R0mxaJVbAphVd'
+                        ? 'mLWX9ixk0SuFrbIYaLs1'
+                        : 'to be made'; //TODO: add the domain id for placement
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CategoryPage(
+                          drive: widget.drive,
+                          driveID: widget.driveID,
+                          domainID: domainID,
+                          domain: 'AnalyticsAndDataScience',
+                          title: 'DATA SCIENCE',
+                        ),
+                      ),
+                    );
+                  }),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
               GestureDetector(
-                child: DomainCard(
-                  domainName: 'Consulting',
-                ),
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CategoryPage(
-                      drive: widget.drive,
-                      domain: 'Consulting',
-                      title: 'CONSULTING',
-                    ),
+                  child: DomainCard(
+                    domainName: 'Consulting',
                   ),
-                ),
-              ),
+                  onTap: () {
+                    String domainID = widget.driveID == 'jt4whg5R0mxaJVbAphVd'
+                        ? 'NkKjb6dSx5YnNObRfphq'
+                        : 'to be made'; //TODO: add the domain id for placement
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CategoryPage(
+                          drive: widget.drive,
+                          driveID: widget.driveID,
+                          domainID: domainID,
+                          domain: 'Consulting',
+                          title: 'CONSULTING',
+                        ),
+                      ),
+                    );
+                  }),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
               GestureDetector(
-                child: DomainCard(domainName: 'Core'),
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CategoryPage(
-                      drive: widget.drive,
-                      domain: 'Core',
-                      title: 'CORE',
-                    ),
-                  ),
-                ),
-              ),
+                  child: DomainCard(domainName: 'Core'),
+                  onTap: () {
+                    String domainID = widget.driveID == 'jt4whg5R0mxaJVbAphVd'
+                        ? '6WNYZSe3uxJHL5B3vWxi'
+                        : 'to be made'; //TODO: add the domain id for placement
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CategoryPage(
+                          drive: widget.drive,
+                          driveID: widget.driveID,
+                          domainID: domainID,
+                          domain: 'Core',
+                          title: 'CORE',
+                        ),
+                      ),
+                    );
+                  }),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
               GestureDetector(
-                child: DomainCard(
-                  domainName: 'Finance and Management',
-                ),
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CategoryPage(
-                      drive: widget.drive,
-                      domain: 'Management',
-                      title: 'FINANCE & MGMT',
-                    ),
+                  child: DomainCard(
+                    domainName: 'Finance and Management',
                   ),
-                ),
-              ),
+                  onTap: () {
+                    String domainID = widget.driveID == 'jt4whg5R0mxaJVbAphVd'
+                        ? 'hc2afBqGjXjn3ELADxFy'
+                        : 'to be made'; //TODO: add the domain id for placement
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CategoryPage(
+                          driveID: widget.driveID,
+                          domainID: domainID,
+                          drive: widget.drive,
+                          domain: 'Management',
+                          title: 'FINANCE & MGMT',
+                        ),
+                      ),
+                    );
+                  }),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
               GestureDetector(
-                child: DomainCard(
-                  domainName: 'Post Graduation',
-                ),
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => CategoryPage(
-                      drive: widget.drive,
-                      domain: 'Research',
-                      title: 'POST GRADUATION',
-                    ),
+                  child: DomainCard(
+                    domainName: 'Post Graduation',
                   ),
-                ),
-              ),
+                  onTap: () {
+                    String domainID = widget.driveID == 'jt4whg5R0mxaJVbAphVd'
+                        ? '5bBTFP2Iil6yhSSgG0t5'
+                        : 'to be made'; //TODO: add the domain id for placement
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CategoryPage(
+                          drive: widget.drive,
+                          driveID: widget.driveID,
+                          domainID: domainID,
+                          domain: 'Research',
+                          title: 'POST GRADUATION',
+                        ),
+                      ),
+                    );
+                  }),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),

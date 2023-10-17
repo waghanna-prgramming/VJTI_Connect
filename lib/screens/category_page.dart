@@ -1,4 +1,4 @@
-import 'package:demo_connect/internships/reume_repo.dart';
+import 'package:demo_connect/internships/resume_repo.dart';
 import 'package:demo_connect/screens/domain_page.dart';
 import 'package:flutter/material.dart';
 
@@ -6,9 +6,13 @@ import '../../common/scaffold_key.dart';
 import '../../widgets/domain_card.dart';
 
 class CategoryPage extends StatefulWidget {
-  final String domain, drive, title;
+  final String domain, drive, title, domainID, driveID;
   const CategoryPage(
-      {required this.drive, required this.domain, required this.title});
+      {required this.drive,
+      required this.driveID,
+      required this.domain,
+      required this.domainID,
+      required this.title});
 
   @override
   State<CategoryPage> createState() => _CategoryPageState();
@@ -33,7 +37,10 @@ class _CategoryPageState extends State<CategoryPage> {
             print('IconButton pressed ...');
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (context) => DomainPage(drive: widget.drive),
+                builder: (context) => DomainPage(
+                  drive: widget.drive,
+                  driveID: widget.driveID,
+                ),
               ),
             );
           },
@@ -70,6 +77,8 @@ class _CategoryPageState extends State<CategoryPage> {
                       drive: widget.drive,
                       domain: 'IT-SoftwareDevelopment',
                       title: 'IT/TECH',
+                      domainID: widget.domainID,
+                      driveID: widget.driveID,
                     ),
                   ),
                 ),
