@@ -1,9 +1,10 @@
 import 'package:demo_connect/login_screen.dart';
-import 'package:demo_connect/signup_screen.dart';
+import 'package:demo_connect/providers/resume_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
@@ -12,8 +13,15 @@ void main() async{
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: LoginScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ResumeProvider>(
+          create: (context) => ResumeProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        home: LoginScreen(),
+      ),
     );
   }
 }

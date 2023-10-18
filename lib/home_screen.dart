@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Scaffold(
-        key: scaffoldKey,
+        // key: scaffoldKey,
         backgroundColor: Color(0xFFF1F4F8),
         appBar: AppBar(
           backgroundColor: Color(0xFFF1F4F8),

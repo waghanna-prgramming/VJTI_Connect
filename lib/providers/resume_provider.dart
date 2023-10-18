@@ -1,42 +1,52 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 
-class ResumeProvider {
-  final String drive, driveID, domain, domainID;
-
-  ResumeProvider(
-      {required this.drive,
-      required this.domain,
-      required this.driveID,
-      required this.domainID});
-
+class ResumeProvider extends ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  List<String> years = [
-    '2019',
-    '2020',
-    '2021',
-    '2022',
-    '2023'
-  ]; // Add more years as needed
-  Map<String, Map<String, String>> dataMap = {};
+  Map<int, Map<String, String>> dataMap = {};
 
-  fetchResume() async {
+  fetchResume(
+      {required String drive,
+      required String domain,
+      required String driveID,
+      required String domainID}) async {
     QuerySnapshot querySnapshot = await _firestore
         .collection(drive)
         .doc(driveID)
         .collection(domain)
         .doc(domainID)
         .collection('ResumeRepo')
+        .orderBy('year')
         .get();
     List<DocumentSnapshot> documents = querySnapshot.docs;
+    print(
+        'Drive ID: $driveID and Domain ID: $domainID and Domain: $domain and Drive: $drive');
 
-    for (DocumentSnapshot docs in documents) {
-      // Map<String, String> mp = {};
-      dataMap[docs['year']]!['name'] = docs['resume'];
+    for (var doc in documents) {
+      int year = doc['year'];
+      String name = doc['name'];
+      String resume = doc['resume'];
+
+      if (!dataMap.containsKey(year)) {
+        dataMap[year] = {};
+      }
+      dataMap[year]![name] = resume;
     }
-    // dataMap[year] = documents;
+
+    // print(dataMap);
+    notifyListeners();
   }
 
-  Map<String, Map<String, String>> get getResume {
+  Map<int, Map<String, String>> get getResume {
     return dataMap;
+  }
+
+  printResume() {
+    dataMap.forEach((key, value) {
+      print('Year: $key');
+      value.forEach((name, link) {
+        print('  Name: $name, Link: $link');
+      });
+    });
   }
 }

@@ -2,7 +2,6 @@ import 'package:demo_connect/internships/resume_repo.dart';
 import 'package:demo_connect/screens/domain_page.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/scaffold_key.dart';
 import '../../widgets/domain_card.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -23,7 +22,7 @@ class _CategoryPageState extends State<CategoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF1F4F8),
-      key: scaffoldKey,
+      // key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: Color(0xFFF1F4F8),
         automaticallyImplyLeading: false,

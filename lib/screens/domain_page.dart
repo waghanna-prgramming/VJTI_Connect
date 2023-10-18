@@ -2,7 +2,6 @@ import 'package:demo_connect/home_screen.dart';
 import 'package:demo_connect/screens/category_page.dart';
 import 'package:flutter/material.dart';
 
-import '../common/scaffold_key.dart';
 import '../widgets/domain_card.dart';
 
 class DomainPage extends StatefulWidget {
@@ -22,7 +21,7 @@ class _DomainPageState extends State<DomainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF1F4F8),
-      key: scaffoldKey,
+      // key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: Color(0xFFF1F4F8),
         automaticallyImplyLeading: false,
@@ -69,7 +68,7 @@ class _DomainPageState extends State<DomainPage> {
                   onTap: () {
                     String domainID = widget.driveID == 'jt4whg5R0mxaJVbAphVd'
                         ? 'rVPe8JohuK1U9vvNeEDp'
-                        : 'to be made'; //TODO: add the domain id for placement
+                        : 'QhMGOnaK4qDfeQlNrNhm';
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -93,7 +92,7 @@ class _DomainPageState extends State<DomainPage> {
                   onTap: () {
                     String domainID = widget.driveID == 'jt4whg5R0mxaJVbAphVd'
                         ? 'mLWX9ixk0SuFrbIYaLs1'
-                        : 'to be made'; //TODO: add the domain id for placement
+                        : 'edGDZsvRkYBnLFZ5MSAm';
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -117,7 +116,7 @@ class _DomainPageState extends State<DomainPage> {
                   onTap: () {
                     String domainID = widget.driveID == 'jt4whg5R0mxaJVbAphVd'
                         ? 'NkKjb6dSx5YnNObRfphq'
-                        : 'to be made'; //TODO: add the domain id for placement
+                        : 'sR3PDWwlqsiGzHpBBaw1';
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -139,7 +138,7 @@ class _DomainPageState extends State<DomainPage> {
                   onTap: () {
                     String domainID = widget.driveID == 'jt4whg5R0mxaJVbAphVd'
                         ? '6WNYZSe3uxJHL5B3vWxi'
-                        : 'to be made'; //TODO: add the domain id for placement
+                        : 'wZlY0aTQFlQOmRRCVaqQ';
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -163,7 +162,7 @@ class _DomainPageState extends State<DomainPage> {
                   onTap: () {
                     String domainID = widget.driveID == 'jt4whg5R0mxaJVbAphVd'
                         ? 'hc2afBqGjXjn3ELADxFy'
-                        : 'to be made'; //TODO: add the domain id for placement
+                        : 'Bi79ttjUZqEVstuU5E95';
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -187,7 +186,7 @@ class _DomainPageState extends State<DomainPage> {
                   onTap: () {
                     String domainID = widget.driveID == 'jt4whg5R0mxaJVbAphVd'
                         ? '5bBTFP2Iil6yhSSgG0t5'
-                        : 'to be made'; //TODO: add the domain id for placement
+                        : 'ySmkSAU1ZGWisnBG4WAb';
                     Navigator.push(
                       context,
                       MaterialPageRoute(
