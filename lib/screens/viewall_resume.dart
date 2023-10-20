@@ -1,28 +1,25 @@
-import 'package:demo_connect/screens/select_company.dart';
+import 'package:demo_connect/screens/resume_repo.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../providers/experience_provider.dart';
 import '../widgets/domain_card.dart';
 
-class Experience extends StatefulWidget {
-  final String domain, drive, domainID, driveID, companyName, title;
-  const Experience(
-      {required this.drive,
-        required this.driveID,
-        required this.domain,
-        required this.domainID,
-      required this.companyName,
-      required this.title});
+class ViewAllResume extends StatefulWidget {
+  late Map<String, String>? dataMap;
+  final String domain, drive, title, domainID, driveID, year;
+  ViewAllResume({required this.domain,
+    required this.domainID,
+    required this.drive,
+    required this.driveID,
+    required this.title,
+    required this.year,
+    required this.dataMap});
 
   @override
-  State<Experience> createState() => _ExperienceState();
+  State<ViewAllResume> createState() => _ViewAllResumeState();
 }
 
-class _ExperienceState extends State<Experience> {
-
-  late ExperienceProvider experienceProvider;
+class _ViewAllResumeState extends State<ViewAllResume> {
 
   Future<void> _launchUrl(Uri url) async {
     if (!await launchUrl(url)) {
@@ -31,24 +28,7 @@ class _ExperienceState extends State<Experience> {
   }
 
   @override
-  void initState() {
-    ExperienceProvider experienceProvider = Provider.of(context, listen: false);
-    experienceProvider.fetchExperience(
-        drive: widget.drive,
-        domain: widget.domain,
-        driveID: widget.driveID,
-        domainID: widget.domainID);
-    // print('Fetching data');
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-
-    experienceProvider = Provider.of(context);
-    Map<String, String>? dataMap = experienceProvider.getExperience(widget.companyName);
-    // print(dataMap?.length);
-
     return Scaffold(
       backgroundColor: const Color(0xFFF1F4F8),
       // key: scaffoldKey,
@@ -65,7 +45,7 @@ class _ExperienceState extends State<Experience> {
             print('IconButton pressed ...');
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (context) => SelectCompany(
+                builder: (context) => ResumeRepository(
                     drive: widget.drive,
                     driveID: widget.driveID,
                     domain: widget.domain,
@@ -76,7 +56,7 @@ class _ExperienceState extends State<Experience> {
           },
         ),
         centerTitle: true,
-        title: Text('Interview Exp'),
+        title: Text(widget.year),
         titleTextStyle: TextStyle(
           fontFamily: 'Sora',
           color: Color(0xFF14181B),
@@ -86,30 +66,41 @@ class _ExperienceState extends State<Experience> {
         actions: [],
         elevation: 0,
       ),
-
       body: ListView.builder(
           itemCount: 1,
           itemBuilder: (context, index) {
-            // print(dataMap?.length);
+            // print(dataMap[dataMap.keys.elementAt(index)]!);
             return Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Column(
-                  children: dataMap!.keys.map((name) {
+                  children: widget.dataMap!.keys.map((name) {
                     return GestureDetector(
                       child: DomainCard(domainName: name),
                       onTap: () {
                         _launchUrl(
-                          Uri.parse(dataMap[name]!),
+                          Uri.parse(widget.dataMap![name]!),
                         );
                       },
                     );
                   }).toList(),
                 ),
+                SizedBox(
+                  height: 30,
+                  width: double.infinity,
+                ),
+                Divider(
+                  height: 1.0,
+                ),
+                SizedBox(
+                  height: 30,
+                  width: double.infinity,
+                ),
               ],
             );
-          }),
+          },
+      ),
     );
   }
 }

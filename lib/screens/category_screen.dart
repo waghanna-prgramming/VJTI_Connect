@@ -7,6 +7,7 @@ import 'package:demo_connect/screens/resume_repo.dart';
 import 'package:demo_connect/screens/select_company.dart';
 import 'package:demo_connect/screens/tips_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgets/domain_card.dart';
 
@@ -24,6 +25,13 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
+
+  Future<void> _launchUrl(Uri url) async {
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -169,11 +177,8 @@ class _CategoryPageState extends State<CategoryPage> {
                   domainName: 'Companies at VJTI',
                 ),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CompaniesAtVJTI(),
-                    ),
+                  _launchUrl(
+                    Uri.parse('https://vjti.ac.in/wp-content/uploads/2023/05/Comapny-name-list-1.pdf'),
                   );
                 },
               ),

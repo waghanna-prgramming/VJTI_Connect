@@ -1,5 +1,6 @@
 import 'package:demo_connect/providers/experience_provider.dart';
 import 'package:demo_connect/screens/category_screen.dart';
+import 'package:demo_connect/screens/experience_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +24,6 @@ class _SelectCompanyState extends State<SelectCompany> {
 
   @override
   void initState() {
-    // TODO: implement initState
     ExperienceProvider experienceProvider = Provider.of(context, listen: false);
     experienceProvider.fetchExperience(
         drive: widget.drive,
@@ -86,8 +86,24 @@ class _SelectCompanyState extends State<SelectCompany> {
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              DomainCard(
-                domainName: dataMap[index],
+              GestureDetector(
+                child: DomainCard(
+                  domainName: dataMap[index],
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Experience(
+                          drive: widget.drive,
+                          domain: widget.domain,
+                          driveID: widget.driveID,
+                          domainID: widget.domainID,
+                          companyName: dataMap[index],
+                      title: widget.title),
+                    ),
+                  );
+                },
               ),
             ],
           );

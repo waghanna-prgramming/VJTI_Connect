@@ -1,5 +1,6 @@
 import 'package:demo_connect/providers/resume_provider.dart';
 import 'package:demo_connect/screens/category_screen.dart';
+import 'package:demo_connect/screens/viewall_resume.dart';
 import 'package:demo_connect/widgets/domain_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -92,7 +93,8 @@ class _ResumeRepositoryState extends State<ResumeRepository> {
             Map<String, String>? yearDataMap =
                 dataMap[dataMap.keys.elementAt(index)];
             return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -106,7 +108,22 @@ class _ResumeRepositoryState extends State<ResumeRepository> {
                             fontWeight: FontWeight.bold, fontSize: 25),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ViewAllResume(
+                                domain: widget.domain,
+                                domainID: widget.domainID,
+                                drive: widget.drive,
+                                driveID: widget.driveID,
+                                title: widget.title,
+                                year: year.toString(),
+                                dataMap: yearDataMap,
+                              ),
+                            ),
+                          );
+                        },
                         child: const Text(
                           'View All',
                           style: TextStyle(color: Colors.grey),
@@ -127,8 +144,16 @@ class _ResumeRepositoryState extends State<ResumeRepository> {
                     );
                   }).toList(),
                 ),
+                SizedBox(
+                  height: 30,
+                  width: double.infinity,
+                ),
                 Divider(
                   height: 1.0,
+                ),
+                SizedBox(
+                  height: 30,
+                  width: double.infinity,
                 ),
               ],
             );

@@ -1,3 +1,4 @@
+import 'package:demo_connect/providers/experience_provider.dart';
 import 'package:demo_connect/screens/login_screen.dart';
 import 'package:demo_connect/providers/resume_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<ResumeProvider>(
           create: (context) => ResumeProvider(),
+        ),
+        ChangeNotifierProvider<ExperienceProvider>(
+          create: (context) => ExperienceProvider(),
         ),
       ],
       child: MaterialApp(

@@ -41,7 +41,7 @@ class _DomainPageState extends State<DomainPage> {
           },
         ),
         centerTitle: true,
-        title: Text('Select Your Domain'),
+        title: Text('Select Domain'),
         titleTextStyle: TextStyle(
           fontFamily: 'Sora',
           color: Color(0xFF14181B),
