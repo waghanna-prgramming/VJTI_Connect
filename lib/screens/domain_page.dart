@@ -1,5 +1,5 @@
-import 'package:demo_connect/home_screen.dart';
-import 'package:demo_connect/screens/category_page.dart';
+import 'package:demo_connect/screens/category_screen.dart';
+import 'package:demo_connect/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/domain_card.dart';

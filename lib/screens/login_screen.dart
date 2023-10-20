@@ -1,6 +1,7 @@
 import 'package:demo_connect/resources/auth_methods.dart';
-import 'package:demo_connect/signup_screen.dart';
+import 'package:demo_connect/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
+
 // import 'package:js/js_util.dart';
 
 import 'home_screen.dart';
@@ -121,8 +122,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0, 12, 0, 24),
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 12, 0, 24),
                               child: Text(
                                 'Enter your details below to log in.',
                                 textAlign: TextAlign.start,
@@ -136,8 +137,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             // Add other form fields similarly
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0, 0, 0, 16),
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                               child: TextFormField(
                                 controller: _emailController,
                                 obscureText: false,
@@ -150,37 +151,36 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
 
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0, 0, 0, 16),
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                               child: TextFormField(
                                 controller: _passwordController,
                                 obscureText: passwordVisibility1,
                                 decoration: InputDecoration(
-                                  labelText: 'Password',
-                                  // Add other properties as needed
-                                  suffixIcon: InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        passwordVisibility1 =
-                                        !passwordVisibility1;
-                                      });
-                                    },
-                                    child: Icon(
-                                      passwordVisibility1
-                                          ? Icons.visibility_outlined
-                                          : Icons.visibility_off_outlined,
-                                      color: Color(0xFF677681),
-                                      size: 22,
-                                    ),
-                                  )
-                                ),
+                                    labelText: 'Password',
+                                    // Add other properties as needed
+                                    suffixIcon: InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          passwordVisibility1 =
+                                              !passwordVisibility1;
+                                        });
+                                      },
+                                      child: Icon(
+                                        passwordVisibility1
+                                            ? Icons.visibility_outlined
+                                            : Icons.visibility_off_outlined,
+                                        color: Color(0xFF677681),
+                                        size: 22,
+                                      ),
+                                    )),
                                 // Add validator as needed
                               ),
                             ),
                             // ...
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0, 0, 0, 16),
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                               child: ElevatedButton(
                                 onPressed: () {
                                   loginUser();
@@ -188,11 +188,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 },
                                 child: !_isLoading
                                     ? const Text(
-                                  'Log in',
-                                )
+                                        'Log in',
+                                      )
                                     : const CircularProgressIndicator(
-                                  color: Colors.white,
-                                ),
+                                        color: Colors.white,
+                                      ),
                                 // Add other button properties as needed
                               ),
                             ),
@@ -203,7 +203,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: const Text(
                                     'Dont have an account?',
                                   ),
-                                  padding: const EdgeInsets.symmetric(vertical: 8),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8),
                                 ),
                                 GestureDetector(
                                   onTap: () => Navigator.of(context).push(
@@ -218,7 +219,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    padding: const EdgeInsets.symmetric(vertical: 8),
+                                    padding:
+                                        const EdgeInsets.symmetric(vertical: 8),
                                   ),
                                 ),
                               ],

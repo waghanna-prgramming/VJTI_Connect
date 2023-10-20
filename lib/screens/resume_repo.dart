@@ -1,46 +1,9 @@
 import 'package:demo_connect/providers/resume_provider.dart';
-import 'package:demo_connect/screens/category_page.dart';
+import 'package:demo_connect/screens/category_screen.dart';
 import 'package:demo_connect/widgets/domain_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-Widget resumeDisplay(int year, Map<String, String> yearDataMap) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              year.toString(),
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: Text(
-                'View All',
-                style: TextStyle(color: Colors.grey),
-              ),
-            ),
-          ],
-        ),
-      ),
-      Column(
-        // children: yearDataMap.keys.map((name) {
-        //   return DomainCard(domainName: name);
-        // }).toList(),
-        children: [
-          DomainCard(domainName: "Tanmay Navandar"),
-          DomainCard(domainName: "Siddhant Waghanna"),
-          DomainCard(domainName: "Yash Chindhe"),
-        ],
-      ),
-    ],
-  );
-}
 
 class ResumeRepository extends StatefulWidget {
   final String domain, drive, title, domainID, driveID;
@@ -110,7 +73,7 @@ class _ResumeRepositoryState extends State<ResumeRepository> {
           },
         ),
         centerTitle: true,
-        title: Text('Resume Repository'),
+        title: Text('Resume Repo'),
         titleTextStyle: TextStyle(
           fontFamily: 'Sora',
           color: Color(0xFF14181B),

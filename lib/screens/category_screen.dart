@@ -1,5 +1,11 @@
-import 'package:demo_connect/internships/resume_repo.dart';
+import 'package:demo_connect/screens/companies_screen.dart';
+import 'package:demo_connect/screens/courses_screen.dart';
 import 'package:demo_connect/screens/domain_page.dart';
+import 'package:demo_connect/screens/prepmaterial_screen.dart';
+import 'package:demo_connect/screens/resume_repo.dart';
+// import 'package:demo_connect/screens/resume_reporeen.dart';
+import 'package:demo_connect/screens/select_company.dart';
+import 'package:demo_connect/screens/tips_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/domain_card.dart';
@@ -85,27 +91,92 @@ class _CategoryPageState extends State<CategoryPage> {
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              DomainCard(domainName: 'Interview Experiences'),
+              GestureDetector(
+                child: DomainCard(
+                  domainName: 'Interview Experiences',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SelectCompany(
+                          drive: widget.drive,
+                          driveID: widget.driveID,
+                          domain: widget.domain,
+                          domainID: widget.domainID,
+                          title: widget.title),
+                    ),
+                  );
+                },
+              ),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              DomainCard(domainName: 'Preparation Material'),
+              GestureDetector(
+                child: DomainCard(
+                  domainName: 'Preparation Material',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PrepMaterial(),
+                    ),
+                  );
+                },
+              ),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              DomainCard(domainName: 'Important Courses'),
+              GestureDetector(
+                child: DomainCard(
+                  domainName: 'Important Courses',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ImpCourses(),
+                    ),
+                  );
+                },
+              ),
+              // SizedBox.fromSize(
+              //   size: Size(20.0, 15.0),
+              // ),
+              // DomainCard(domainName: 'Other Aspects'),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              DomainCard(domainName: 'Other Aspects'),
+              GestureDetector(
+                child: DomainCard(
+                  domainName: 'General Tips',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => GeneralTips(),
+                    ),
+                  );
+                },
+              ),
               SizedBox.fromSize(
                 size: Size(20.0, 15.0),
               ),
-              DomainCard(domainName: 'General Tips'),
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
+              GestureDetector(
+                child: DomainCard(
+                  domainName: 'Companies at VJTI',
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CompaniesAtVJTI(),
+                    ),
+                  );
+                },
               ),
-              DomainCard(domainName: 'Companies at VJTI'),
             ],
           ),
         ],

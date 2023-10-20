@@ -1,6 +1,7 @@
-import 'package:demo_connect/home_screen.dart';
 import 'package:demo_connect/resources/auth_methods.dart';
+import 'package:demo_connect/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+
 import 'login_screen.dart';
 
 class SignUp extends StatefulWidget {
