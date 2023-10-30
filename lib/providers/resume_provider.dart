@@ -40,13 +40,4 @@ class ResumeProvider extends ChangeNotifier {
   Map<int, Map<String, String>> get getResume {
     return dataMap;
   }
-
-  printResume() {
-    dataMap.forEach((key, value) {
-      print('Year: $key');
-      value.forEach((name, link) {
-        print('  Name: $name, Link: $link');
-      });
-    });
-  }
 }

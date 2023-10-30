@@ -1,4 +1,3 @@
-import 'package:demo_connect/screens/companies_screen.dart';
 import 'package:demo_connect/screens/courses_screen.dart';
 import 'package:demo_connect/screens/domain_page.dart';
 import 'package:demo_connect/screens/prepmaterial_screen.dart';
@@ -25,7 +24,6 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
-
   Future<void> _launchUrl(Uri url) async {
     if (!await launchUrl(url)) {
       throw Exception('Could not launch $url');
@@ -128,7 +126,12 @@ class _CategoryPageState extends State<CategoryPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PrepMaterial(),
+                      builder: (context) => PrepMaterial(
+                          drive: widget.drive,
+                          driveID: widget.driveID,
+                          domain: widget.domain,
+                          domainID: widget.domainID,
+                          title: widget.title),
                     ),
                   );
                 },
@@ -144,7 +147,12 @@ class _CategoryPageState extends State<CategoryPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ImpCourses(),
+                      builder: (context) => ImpCourses(
+                          drive: widget.drive,
+                          driveID: widget.driveID,
+                          domain: widget.domain,
+                          domainID: widget.domainID,
+                          title: widget.title),
                     ),
                   );
                 },
@@ -164,7 +172,12 @@ class _CategoryPageState extends State<CategoryPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => GeneralTips(),
+                      builder: (context) => GeneralTips(
+                          drive: widget.drive,
+                          driveID: widget.driveID,
+                          domain: widget.domain,
+                          domainID: widget.domainID,
+                          title: widget.title),
                     ),
                   );
                 },
@@ -178,7 +191,8 @@ class _CategoryPageState extends State<CategoryPage> {
                 ),
                 onTap: () {
                   _launchUrl(
-                    Uri.parse('https://vjti.ac.in/wp-content/uploads/2023/05/Comapny-name-list-1.pdf'),
+                    Uri.parse(
+                        'https://vjti.ac.in/wp-content/uploads/2023/05/Comapny-name-list-1.pdf'),
                   );
                 },
               ),
