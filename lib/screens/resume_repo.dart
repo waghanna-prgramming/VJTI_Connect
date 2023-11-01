@@ -46,7 +46,7 @@ class _ResumeRepositoryState extends State<ResumeRepository> {
     // print("hey we are in resume repo");
     resumeProvider = Provider.of(context);
     Map<int, Map<String, String>> dataMap = resumeProvider.getResume;
-    // print(dataMap);
+    print(dataMap);
     return Scaffold(
       backgroundColor: const Color(0xFFF1F4F8),
       // key: scaffoldKey,

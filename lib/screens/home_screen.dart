@@ -102,9 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => DomainPage(
-                                    drive: 'placements',
+                                    drive: 'placement',
                                     driveID:
-                                        'to be made'), //TODO: Add drive ID for placements
+                                        'j67FCJVUJsHsDOznNNQa'), //TODO: Add drive ID for placements
                               ),
                             ),
                           ),

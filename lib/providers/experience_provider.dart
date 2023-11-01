@@ -19,6 +19,8 @@ class ExperienceProvider with ChangeNotifier {
         .get();
     List<DocumentSnapshot> documents = querySnapshot.docs;
 
+    dataMap.clear();
+
     for (var doc in documents) {
       String company = doc['company'];
       String name = doc['name'];

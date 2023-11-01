@@ -86,8 +86,8 @@ class _CategoryPageState extends State<CategoryPage> {
                   MaterialPageRoute(
                     builder: (context) => ResumeRepository(
                       drive: widget.drive,
-                      domain: 'IT-SoftwareDevelopment',
-                      title: 'IT/TECH',
+                      domain: widget.domain,
+                      title: widget.title,
                       domainID: widget.domainID,
                       driveID: widget.driveID,
                     ),

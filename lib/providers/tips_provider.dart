@@ -10,6 +10,7 @@ class TipsProvider with ChangeNotifier {
       required String domain,
       required String driveID,
       required String domainID}) async {
+    dataMap.clear();
     QuerySnapshot querySnapshot = await _firestore
         .collection(drive)
         .doc(driveID)
