@@ -1,9 +1,10 @@
 import 'package:demo_connect/screens/courses_screen.dart';
 import 'package:demo_connect/screens/domain_page.dart';
 import 'package:demo_connect/screens/prepmaterial_screen.dart';
-import 'package:demo_connect/screens/resume_repo.dart';
+// import 'package:demo_connect/screens/prepmaterial_screenepo.dart';
 // import 'package:demo_connect/screens/resume_reporeen.dart';
 import 'package:demo_connect/screens/select_company.dart';
+import 'package:demo_connect/screens/select_year_resume.dart';
 import 'package:demo_connect/screens/tips_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -84,7 +85,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ResumeRepository(
+                    builder: (context) => SelectYearResume(
                       drive: widget.drive,
                       domain: widget.domain,
                       title: widget.title,

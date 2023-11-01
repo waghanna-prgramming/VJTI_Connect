@@ -38,6 +38,10 @@ class ResumeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<int> get getYears {
+    return dataMap.keys.toList();
+  }
+
   Map<int, Map<String, String>> get getResume {
     return dataMap;
   }

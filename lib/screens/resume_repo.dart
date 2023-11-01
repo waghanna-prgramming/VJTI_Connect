@@ -1,6 +1,5 @@
 import 'package:demo_connect/providers/resume_provider.dart';
 import 'package:demo_connect/screens/category_screen.dart';
-import 'package:demo_connect/screens/viewall_resume.dart';
 import 'package:demo_connect/widgets/domain_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,8 +7,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ResumeRepository extends StatefulWidget {
   final String domain, drive, title, domainID, driveID;
+  final int year;
   const ResumeRepository(
       {required this.domain,
+      required this.year,
       required this.domainID,
       required this.drive,
       required this.driveID,
@@ -108,22 +109,7 @@ class _ResumeRepositoryState extends State<ResumeRepository> {
                             fontWeight: FontWeight.bold, fontSize: 25),
                       ),
                       GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ViewAllResume(
-                                domain: widget.domain,
-                                domainID: widget.domainID,
-                                drive: widget.drive,
-                                driveID: widget.driveID,
-                                title: widget.title,
-                                year: year.toString(),
-                                dataMap: yearDataMap,
-                              ),
-                            ),
-                          );
-                        },
+                        onTap: () {},
                         child: const Text(
                           'View All',
                           style: TextStyle(color: Colors.grey),
