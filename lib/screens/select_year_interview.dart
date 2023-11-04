@@ -1,45 +1,30 @@
-import 'package:demo_connect/providers/experience_provider.dart';
-import 'package:demo_connect/screens/category_screen.dart';
-import 'package:demo_connect/screens/select_year_interview.dart';
+import 'package:demo_connect/screens/selected_year_pdfs.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../widgets/domain_card.dart';
+import 'category_screen.dart';
 
-class SelectCompany extends StatefulWidget {
+class SelectYearInterview extends StatefulWidget {
   final String domain, drive, title, domainID, driveID;
-  const SelectCompany(
-      {required this.drive,
-      required this.driveID,
-      required this.domain,
-      required this.domainID,
-      required this.title});
+  final Map<int, Map<String, String>> companyData;
+  const SelectYearInterview({
+    super.key,
+    required this.drive,
+    required this.driveID,
+    required this.domain,
+    required this.domainID,
+    required this.title,
+    required this.companyData,
+  });
 
   @override
-  State<SelectCompany> createState() => _SelectCompanyState();
+  State<SelectYearInterview> createState() => _SelectYearInterviewState();
 }
 
-class _SelectCompanyState extends State<SelectCompany> {
-  late ExperienceProvider experienceProvider;
-
-  @override
-  void initState() {
-    ExperienceProvider experienceProvider = Provider.of(context, listen: false);
-    experienceProvider.fetchExperience(
-        drive: widget.drive,
-        domain: widget.domain,
-        driveID: widget.driveID,
-        domainID: widget.domainID);
-
-    super.initState();
-  }
-
+class _SelectYearInterviewState extends State<SelectYearInterview> {
   @override
   Widget build(BuildContext context) {
-    experienceProvider = Provider.of(context);
-    Map<String, Map<int, Map<String, String>>> dataMap =
-        experienceProvider.getExperience;
-    List<String> companyNames = dataMap.keys.toList();
+    List<int> yearList = widget.companyData.keys.toList();
 
     return Scaffold(
       backgroundColor: Color(0xFFF1F4F8),
@@ -68,7 +53,7 @@ class _SelectCompanyState extends State<SelectCompany> {
           },
         ),
         centerTitle: true,
-        title: Text('Select Company'),
+        title: Text('Select Year'),
         titleTextStyle: TextStyle(
           fontFamily: 'Sora',
           color: Color(0xFF14181B),
@@ -79,7 +64,7 @@ class _SelectCompanyState extends State<SelectCompany> {
         elevation: 0,
       ),
       body: ListView.builder(
-        itemCount: companyNames.length,
+        itemCount: yearList.length,
         itemBuilder: (context, index) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -90,18 +75,19 @@ class _SelectCompanyState extends State<SelectCompany> {
               ),
               GestureDetector(
                 child: DomainCard(
-                  domainName: companyNames[index],
+                  domainName: yearList[index].toString(),
                 ),
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SelectYearInterview(
+                      builder: (context) => SelectedYearPDFs(
                           drive: widget.drive,
                           domain: widget.domain,
                           driveID: widget.driveID,
                           domainID: widget.domainID,
-                          companyData: dataMap[companyNames[index]]!,
+                          dataMap: widget.companyData[yearList[index]],
+                          year: yearList[index].toString(),
                           title: widget.title),
                     ),
                   );

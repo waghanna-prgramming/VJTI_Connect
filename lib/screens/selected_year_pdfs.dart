@@ -4,10 +4,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/domain_card.dart';
 
-class ViewAllResume extends StatefulWidget {
+class SelectedYearPDFs extends StatefulWidget {
   late Map<String, String>? dataMap;
   final String domain, drive, title, domainID, driveID, year;
-  ViewAllResume(
+  SelectedYearPDFs(
       {required this.domain,
       required this.domainID,
       required this.drive,
@@ -17,10 +17,10 @@ class ViewAllResume extends StatefulWidget {
       required this.dataMap});
 
   @override
-  State<ViewAllResume> createState() => _ViewAllResumeState();
+  State<SelectedYearPDFs> createState() => _SelectedYearPDFsState();
 }
 
-class _ViewAllResumeState extends State<ViewAllResume> {
+class _SelectedYearPDFsState extends State<SelectedYearPDFs> {
   Future<void> _launchUrl(Uri url) async {
     if (!await launchUrl(url)) {
       throw Exception('Could not launch $url');

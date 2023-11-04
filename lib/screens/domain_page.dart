@@ -162,7 +162,7 @@ class _DomainPageState extends State<DomainPage> {
                   onTap: () {
                     String domainID = widget.driveID == 'jt4whg5R0mxaJVbAphVd'
                         ? 'hc2afBqGjXjn3ELADxFy'
-                        : 'Bi79ttjUZqEVstuU5E95';
+                        : 'g5BVC9Q1TFFMdxIfGJyY';
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -170,7 +170,7 @@ class _DomainPageState extends State<DomainPage> {
                           driveID: widget.driveID,
                           domainID: domainID,
                           drive: widget.drive,
-                          domain: 'Management',
+                          domain: 'Finance',
                           title: 'FINANCE & MGMT',
                         ),
                       ),

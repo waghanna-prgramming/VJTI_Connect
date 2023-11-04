@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ExperienceProvider with ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  Map<String, Map<String, String>> dataMap = {};
+  Map<String, Map<int, Map<String, String>>> dataMap = {};
 
   fetchExperience(
       {required String drive,
@@ -25,11 +25,15 @@ class ExperienceProvider with ChangeNotifier {
       String company = doc['company'];
       String name = doc['name'];
       String explink = doc['explink'];
+      int year = doc['year'];
 
       if (!dataMap.containsKey(company)) {
         dataMap[company] = {};
       }
-      dataMap[company]![name] = explink;
+      if (!dataMap[company]!.containsKey(year)) {
+        dataMap[company]![year] = {};
+      }
+      dataMap[company]![year]![name] = explink;
     }
 
     // print(dataMap);
@@ -40,7 +44,11 @@ class ExperienceProvider with ChangeNotifier {
     return dataMap.keys.toList();
   }
 
-  Map<String, String>? getExperience(String companyName) {
-    return dataMap[companyName];
+  List<int> getYear(String company) {
+    return dataMap[company]!.keys.toList();
+  }
+
+  Map<String, Map<int, Map<String, String>>> get getExperience {
+    return dataMap;
   }
 }

@@ -1,5 +1,5 @@
 import 'package:demo_connect/providers/resume_provider.dart';
-import 'package:demo_connect/screens/viewall_resume.dart';
+import 'package:demo_connect/screens/selected_year_pdfs.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,12 +8,14 @@ import 'category_screen.dart';
 
 class SelectYearResume extends StatefulWidget {
   final String domain, drive, title, domainID, driveID;
-  const SelectYearResume(
-      {required this.drive,
-      required this.driveID,
-      required this.domain,
-      required this.domainID,
-      required this.title});
+  const SelectYearResume({
+    super.key,
+    required this.drive,
+    required this.driveID,
+    required this.domain,
+    required this.domainID,
+    required this.title,
+  });
 
   @override
   State<SelectYearResume> createState() => _SelectYearResumeState();
@@ -95,7 +97,7 @@ class _SelectYearResumeState extends State<SelectYearResume> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ViewAllResume(
+                      builder: (context) => SelectedYearPDFs(
                           drive: widget.drive,
                           domain: widget.domain,
                           driveID: widget.driveID,
