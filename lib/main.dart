@@ -4,6 +4,8 @@ import 'package:demo_connect/providers/prep_material_provider.dart';
 import 'package:demo_connect/providers/resume_provider.dart';
 import 'package:demo_connect/providers/tips_provider.dart';
 import 'package:demo_connect/screens/login_screen.dart';
+import 'package:demo_connect/screens/signup_screen.dart';
+import 'package:demo_connect/screens/verify_email.dart';
 // import 'package:demo_connect/screens/login_screenrial_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        home: LoginScreen(),
+        home: SignUp(),
       ),
     );
   }

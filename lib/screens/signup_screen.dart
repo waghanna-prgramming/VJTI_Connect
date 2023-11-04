@@ -1,5 +1,6 @@
 import 'package:demo_connect/resources/auth_methods.dart';
 import 'package:demo_connect/screens/home_screen.dart';
+import 'package:demo_connect/screens/verify_email.dart';
 import 'package:flutter/material.dart';
 
 import 'login_screen.dart';
@@ -53,9 +54,9 @@ class _SignUpState extends State<SignUp> {
         _isLoading = false;
       });
       // navigate to the home screen
-      Navigator.of(context).push(
+      Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => HomeScreen(),
+          builder: (context) => VerifyEmail(),
         ),
       );
     } else {
