@@ -1,4 +1,4 @@
-import 'package:demo_connect/dump/test_home_screen.dart';
+import 'package:demo_connect/screens/test_home_screen.dart';
 import 'package:demo_connect/resources/auth_methods.dart';
 import 'package:demo_connect/screens/signup_screen.dart';
 import 'package:flutter/cupertino.dart';

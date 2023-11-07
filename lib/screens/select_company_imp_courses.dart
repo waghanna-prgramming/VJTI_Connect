@@ -44,14 +44,14 @@ class _SelectCompanyImpCoursesState extends State<SelectCompanyImpCourses> {
     Map<String, Map<String, String>> courses = coursesProvider.getCourses;
     List<String> companyNames = courses.keys.toList();
     return Scaffold(
-      backgroundColor: const Color(0xFFF1F4F8),
+      backgroundColor: const Color(0xFF4F4F5B),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF1F4F8),
+        backgroundColor: const Color(0xFF4F4F5B),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xFF14181B),
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () {
@@ -68,51 +68,69 @@ class _SelectCompanyImpCoursesState extends State<SelectCompanyImpCourses> {
             );
           },
         ),
-        centerTitle: true,
-        title: const Text('Select Company'),
-        titleTextStyle: const TextStyle(
-          fontFamily: 'Sora',
-          color: Color(0xFF14181B),
-          fontSize: 36,
-          fontWeight: FontWeight.bold,
-        ),
         actions: const [],
         elevation: 0,
       ),
-      body: ListView.builder(
-        itemCount: companyNames.length,
-        itemBuilder: (context, index) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox.fromSize(
-                size: const Size(20.0, 15.0),
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(10, 0, 100, 0),
+            child: Container(
+              width: double.infinity,
+              height: 70,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
               ),
-              GestureDetector(
-                child: DomainCard(
-                  domainName: companyNames[index],
+              alignment: AlignmentDirectional(0.00, 0.00),
+              child: Text(
+                'Important Courses',
+                style: TextStyle(
+                  fontFamily: 'Sora',
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
                 ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ListTileScreen(
-                        drive: widget.drive,
-                        domain: widget.domain,
-                        driveID: widget.driveID,
-                        domainID: widget.domainID,
-                        companyMaterial: courses[companyNames[index]]!,
-                        title: widget.title,
-                        titleForListTileScreen: 'Imp Courses',
-                      ),
-                    ),
-                  );
-                },
               ),
-            ],
-          );
-        },
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: companyNames.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    SizedBox.fromSize(
+                      size: const Size(20.0, 15.0),
+                    ),
+                    GestureDetector(
+                      child: DomainCard(
+                        domainName: companyNames[index],
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ListTileScreen(
+                              drive: widget.drive,
+                              domain: widget.domain,
+                              driveID: widget.driveID,
+                              domainID: widget.domainID,
+                              companyMaterial: courses[companyNames[index]]!,
+                              title: widget.title,
+                              titleForListTileScreen: 'Imp Courses',
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

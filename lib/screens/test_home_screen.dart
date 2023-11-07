@@ -1,4 +1,4 @@
-import 'package:demo_connect/dump/pages.dart';
+import 'package:demo_connect/resources/pages.dart';
 import 'package:flutter/material.dart';
 
 class TestHomeScreen extends StatefulWidget {

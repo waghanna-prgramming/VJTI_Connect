@@ -96,9 +96,6 @@ class _SelectCompanyPrepMaterialState extends State<SelectCompanyPrepMaterial> {
               ),
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
           Expanded(
             child: ListView.builder(
               itemCount: companyNames.length,

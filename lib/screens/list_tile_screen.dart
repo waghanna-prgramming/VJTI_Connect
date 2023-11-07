@@ -30,14 +30,14 @@ class _ListTileScreenState extends State<ListTileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF1F4F8),
+      backgroundColor: const Color(0xFF4F4F5B),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF1F4F8),
+        backgroundColor: const Color(0xFF4F4F5B),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xFF14181B),
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () {
@@ -54,31 +54,54 @@ class _ListTileScreenState extends State<ListTileScreen> {
             );
           },
         ),
-        centerTitle: true,
-        title: Text(widget.titleForListTileScreen),
-        titleTextStyle: const TextStyle(
-          fontFamily: 'Sora',
-          color: Color(0xFF14181B),
-          fontSize: 36,
-          fontWeight: FontWeight.bold,
-        ),
         actions: const [],
         elevation: 0,
       ),
-      body: ListView.builder(
-        itemCount: widget.companyMaterial.length,
-        itemBuilder: (BuildContext context, int index) {
-          String content = widget.companyMaterial.keys.elementAt(index);
-          String? link = widget.companyMaterial[content];
-          return ListTile(
-            title: Text(content),
-            leading: const Icon(Icons.library_books),
-            trailing: link != "na" ? const Icon(Icons.arrow_forward) : null,
-            onTap: () {
-              link != "na" ? _launchUrl(Uri.parse(link!)) : null;
-            },
-          );
-        },
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(10, 0, 170, 0),
+            child: Container(
+              width: double.infinity,
+              height: 70,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              alignment: AlignmentDirectional(0.00, 0.00),
+              child: Text(
+                widget.titleForListTileScreen,
+                style: TextStyle(
+                  fontFamily: 'Sora',
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: widget.companyMaterial.length,
+              itemBuilder: (BuildContext context, int index) {
+                String content = widget.companyMaterial.keys.elementAt(index);
+                String? link = widget.companyMaterial[content];
+                return ListTile(
+                  title: Text(content, style: TextStyle(
+                    color: Colors.white,
+                  ),),
+                  leading: const Icon(Icons.library_books, color: Colors.white,),
+                  trailing: link != "na" ? const Icon(Icons.arrow_forward, color: Colors.white,) : null,
+                  onTap: () {
+                    link != "na" ? _launchUrl(Uri.parse(link!)) : null;
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

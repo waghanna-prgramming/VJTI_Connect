@@ -1,4 +1,4 @@
-import 'package:demo_connect/dump/test_home_screen.dart';
+import 'package:demo_connect/screens/test_home_screen.dart';
 // import 'package:demo_connect/screens/category_sub_branch.dart';
 import 'package:flutter/material.dart';
 
@@ -69,7 +69,7 @@ class _DomainPageState extends State<DomainPage> {
                         drive: widget.drive,
                         driveID: widget.driveID,
                         domain: 'IT-SoftwareDevelopment',
-                        title: 'IT/TECH',
+                        title: 'IT/Tech',
                         domainID: domainID,
                       ),
                     ),
@@ -92,7 +92,7 @@ class _DomainPageState extends State<DomainPage> {
                         driveID: widget.driveID,
                         domainID: domainID,
                         domain: 'AnalyticsAndDataScience',
-                        title: 'DATA SCIENCE',
+                        title: 'Data Science',
                       ),
                     ),
                   );
@@ -114,7 +114,7 @@ class _DomainPageState extends State<DomainPage> {
                         driveID: widget.driveID,
                         domainID: domainID,
                         domain: 'Consulting',
-                        title: 'CONSULTING',
+                        title: 'Consulting',
                       ),
                     ),
                   );
@@ -152,7 +152,7 @@ class _DomainPageState extends State<DomainPage> {
                         domainID: domainID,
                         drive: widget.drive,
                         domain: 'Finance',
-                        title: 'FINANCE & MGMT',
+                        title: 'Finance & Mgmt',
                       ),
                     ),
                   );
@@ -174,7 +174,7 @@ class _DomainPageState extends State<DomainPage> {
                         driveID: widget.driveID,
                         domainID: domainID,
                         domain: 'Research',
-                        title: 'POST GRADUATION',
+                        title: 'Post Graduation',
                       ),
                     ),
                   );

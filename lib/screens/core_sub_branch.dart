@@ -19,15 +19,15 @@ class _CoreSubBranchState extends State<CoreSubBranch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF1F4F8),
+      backgroundColor: Color(0xFF4F4F5B),
       // key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFFF1F4F8),
+        backgroundColor: Color(0xFF4F4F5B),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xFF14181B),
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () {
@@ -40,14 +40,6 @@ class _CoreSubBranchState extends State<CoreSubBranch> {
             );
           },
         ),
-        centerTitle: true,
-        title: Text('Select Sub Domain'),
-        titleTextStyle: TextStyle(
-          fontFamily: 'Sora',
-          color: Color(0xFF14181B),
-          fontSize: 36,
-          fontWeight: FontWeight.bold,
-        ),
         actions: [],
         elevation: 0,
       ),
@@ -58,8 +50,23 @@ class _CoreSubBranchState extends State<CoreSubBranch> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(20, 0, 100, 0),
+                child: Text(
+                  'Core',
+                  style: TextStyle(
+                    fontFamily: 'Sora',
+                    color: Colors.white,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
               ),
               GestureDetector(
                   child: DomainCard(
