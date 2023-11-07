@@ -28,13 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         // key: scaffoldKey,
         backgroundColor: Color(0xFFF1F4F8),
-        appBar: AppBar(
-          backgroundColor: Color(0xFFF1F4F8),
-          automaticallyImplyLeading: false,
-          actions: [],
-          centerTitle: false,
-          elevation: 0,
-        ),
         body: SafeArea(
           top: true,
           child: Align(
@@ -44,23 +37,29 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
-                  child: Container(
-                    width: double.infinity,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    alignment: AlignmentDirectional(0.00, 0.00),
-                    child: Text(
-                      'VJTI Connect',
-                      style: TextStyle(
-                        fontFamily: 'Sora',
-                        color: Color(0xFF14181B),
-                        fontSize: 36,
-                        fontWeight: FontWeight.w500,
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 32),
+                  child: Column(
+                    children: [
+                      Image(image: AssetImage('lib/images/vjtilogo.png'),
+                        height: 200,),
+                      Container(
+                        width: double.infinity,
+                        height: 55,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: Text(
+                          'VJTI Connect',
+                          style: TextStyle(
+                            fontFamily: 'Sora',
+                            color: Color(0xFF14181B),
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
                 Column(

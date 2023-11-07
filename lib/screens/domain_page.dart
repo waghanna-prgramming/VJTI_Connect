@@ -1,7 +1,9 @@
+import 'package:demo_connect/dump/test_home_screen.dart';
 import 'package:demo_connect/screens/category_screen.dart';
 import 'package:demo_connect/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../common/heading.dart';
 import '../widgets/domain_card.dart';
 
 class DomainPage extends StatefulWidget {
@@ -20,33 +22,25 @@ class _DomainPageState extends State<DomainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF1F4F8),
+      backgroundColor: Color(0xFF4F4F5B),
       // key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFFF1F4F8),
+        backgroundColor: Color(0xFF4F4F5B),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xFF14181B),
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () {
             print('IconButton pressed ...');
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(
-                builder: (context) => HomeScreen(),
+                builder: (context) => TestHomeScreen(),
               ),
             );
           },
-        ),
-        centerTitle: true,
-        title: Text('Select Domain'),
-        titleTextStyle: TextStyle(
-          fontFamily: 'Sora',
-          color: Color(0xFF14181B),
-          fontSize: 36,
-          fontWeight: FontWeight.bold,
         ),
         actions: [],
         elevation: 0,
@@ -58,9 +52,7 @@ class _DomainPageState extends State<DomainPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
-              ),
+              Header(heading: 'Domains'),
               GestureDetector(
                   child: DomainCard(
                     domainName: 'IT/Tech',
@@ -81,10 +73,7 @@ class _DomainPageState extends State<DomainPage> {
                         ),
                       ),
                     );
-                  }),
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
-              ),
+                  },),
               GestureDetector(
                   child: DomainCard(
                     domainName: 'Data Science',
@@ -105,10 +94,7 @@ class _DomainPageState extends State<DomainPage> {
                         ),
                       ),
                     );
-                  }),
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
-              ),
+                  },),
               GestureDetector(
                   child: DomainCard(
                     domainName: 'Consulting',
@@ -129,10 +115,7 @@ class _DomainPageState extends State<DomainPage> {
                         ),
                       ),
                     );
-                  }),
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
-              ),
+                  },),
               GestureDetector(
                   child: DomainCard(domainName: 'Core'),
                   onTap: () {
@@ -151,10 +134,7 @@ class _DomainPageState extends State<DomainPage> {
                         ),
                       ),
                     );
-                  }),
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
-              ),
+                  },),
               GestureDetector(
                   child: DomainCard(
                     domainName: 'Finance and Management',
@@ -175,10 +155,7 @@ class _DomainPageState extends State<DomainPage> {
                         ),
                       ),
                     );
-                  }),
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
-              ),
+                  },),
               GestureDetector(
                   child: DomainCard(
                     domainName: 'Post Graduation',
@@ -199,10 +176,7 @@ class _DomainPageState extends State<DomainPage> {
                         ),
                       ),
                     );
-                  }),
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
-              ),
+                  },),
               DomainCard(domainName: 'Others'),
             ],
           ),

@@ -23,6 +23,9 @@ class AuthMethods {
   }) async {
     String res = "Some error Occurred";
     try {
+
+      // print('Checking if all fields are entered or not!!!');
+
       if (email.isNotEmpty ||
           password.isNotEmpty ||
           username.isNotEmpty ||
@@ -33,12 +36,16 @@ class AuthMethods {
           password: password,
         );
 
+        // print('Adding user details to user model...\n');
+
         model.User user = model.User(
           username: username,
           regno: regno,
           email: email,
           password: password,
         );
+
+        // print('Adding user to database...\n');
 
         // adding user in our database
         await _firestore

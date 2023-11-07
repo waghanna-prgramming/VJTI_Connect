@@ -115,19 +115,26 @@ class _VerifyEmailState extends State<VerifyEmail> {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Email Verification',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontSize: 24, // Modify as needed
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8, top: 20, right: 8, bottom: 8,),
+                      child: Text(
+                        'Email Verification',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontSize: 24, // Modify as needed
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                      width: double.infinity,
                     ),
                     Padding(
                       padding:
                       EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                       child: Text(
-                        'A link has been sent to your email account.\nTap on the provided link to verify your email address.',
+                        'A link has been sent to your email account.\n\nTap on the provided link to verify your email address.',
                       ),
                     ),
                     // ...

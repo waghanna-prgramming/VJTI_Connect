@@ -2,6 +2,7 @@ import 'package:demo_connect/screens/select_year_resume.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../common/heading.dart';
 import '../widgets/domain_card.dart';
 
 class SelectedYearPDFs extends StatefulWidget {
@@ -30,15 +31,15 @@ class _SelectedYearPDFsState extends State<SelectedYearPDFs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF1F4F8),
+      backgroundColor: const Color(0xFF4F4F5B),
       // key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF1F4F8),
+        backgroundColor: const Color(0xFF4F4F5B),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xFF14181B),
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () {
@@ -55,51 +56,58 @@ class _SelectedYearPDFsState extends State<SelectedYearPDFs> {
             );
           },
         ),
-        centerTitle: true,
-        title: Text(widget.year),
-        titleTextStyle: TextStyle(
-          fontFamily: 'Sora',
-          color: Color(0xFF14181B),
-          fontSize: 36,
-          fontWeight: FontWeight.bold,
-        ),
         actions: [],
         elevation: 0,
       ),
-      body: ListView.builder(
-        itemCount: 1,
-        itemBuilder: (context, index) {
-          // print(dataMap[dataMap.keys.elementAt(index)]!);
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Column(
-                children: widget.dataMap!.keys.map((name) {
-                  return GestureDetector(
-                    child: DomainCard(domainName: name),
-                    onTap: () {
-                      _launchUrl(
-                        Uri.parse(widget.dataMap![name]!),
-                      );
-                    },
-                  );
-                }).toList(),
-              ),
-              SizedBox(
-                height: 30,
-                width: double.infinity,
-              ),
-              Divider(
-                height: 1.0,
-              ),
-              SizedBox(
-                height: 30,
-                width: double.infinity,
-              ),
-            ],
-          );
-        },
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          Header(heading: widget.year),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 1,
+              itemBuilder: (context, index) {
+                // print(dataMap[dataMap.keys.elementAt(index)]!);
+                return Column(
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: widget.dataMap!.keys.map((name) {
+                        return GestureDetector(
+                          child: DomainCard(domainName: name),
+                          onTap: () {
+                            _launchUrl(
+                              Uri.parse(widget.dataMap![name]!),
+                            );
+                          },
+                        );
+                      }).toList(),
+                    ),
+                    SizedBox(
+                      height: 30,
+                      width: double.infinity,
+                    ),
+                    Divider(
+                      height: 1.0,
+                    ),
+                    SizedBox(
+                      height: 30,
+                      width: double.infinity,
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

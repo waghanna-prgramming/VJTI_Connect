@@ -42,15 +42,15 @@ class _SelectCompanyState extends State<SelectCompany> {
     List<String> companyNames = dataMap.keys.toList();
 
     return Scaffold(
-      backgroundColor: Color(0xFFF1F4F8),
+      backgroundColor: Color(0xFF4F4F5B),
       // key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFFF1F4F8),
+        backgroundColor: Color(0xFF4F4F5B),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xFF14181B),
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () {
@@ -67,49 +67,65 @@ class _SelectCompanyState extends State<SelectCompany> {
             );
           },
         ),
-        centerTitle: true,
-        title: Text('Select Company'),
-        titleTextStyle: TextStyle(
-          fontFamily: 'Sora',
-          color: Color(0xFF14181B),
-          fontSize: 36,
-          fontWeight: FontWeight.bold,
-        ),
         actions: [],
         elevation: 0,
       ),
-      body: ListView.builder(
-        itemCount: companyNames.length,
-        itemBuilder: (context, index) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
+      body: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 70, 0),
+            child: Container(
+              width: double.infinity,
+              height: 70,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
               ),
-              GestureDetector(
-                child: DomainCard(
-                  domainName: companyNames[index],
+              alignment: AlignmentDirectional(0.00, 0.00),
+              child: Text(
+                'Interview Experience',
+                style: TextStyle(
+                  fontFamily: 'Sora',
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
                 ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SelectYearInterview(
-                          drive: widget.drive,
-                          domain: widget.domain,
-                          driveID: widget.driveID,
-                          domainID: widget.domainID,
-                          companyData: dataMap[companyNames[index]]!,
-                          title: widget.title),
-                    ),
-                  );
-                },
               ),
-            ],
-          );
-        },
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: companyNames.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    GestureDetector(
+                      child: DomainCard(
+                        domainName: companyNames[index],
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SelectYearInterview(
+                                drive: widget.drive,
+                                domain: widget.domain,
+                                driveID: widget.driveID,
+                                domainID: widget.domainID,
+                                companyData: dataMap[companyNames[index]]!,
+                                title: widget.title,
+                            companyName: companyNames[index],),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,8 +1,8 @@
 import 'package:demo_connect/resources/auth_methods.dart';
 import 'package:demo_connect/screens/home_screen.dart';
 import 'package:demo_connect/screens/verify_email.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'login_screen.dart';
 
 class SignUp extends StatefulWidget {
@@ -47,7 +47,8 @@ class _SignUpState extends State<SignUp> {
       password: _passwordController.text,
       username: _nameController.text,
       regno: _regnoController.text,
-    ); //
+    );
+    print('signUpUser function running....\n');//
     // if string returned is success, user has been created
     if (res == "success") {
       setState(() {
@@ -73,13 +74,6 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFF1F4F8),
-      appBar: AppBar(
-        backgroundColor: Color(0xFFF1F4F8),
-        automaticallyImplyLeading: false,
-        actions: [],
-        centerTitle: false,
-        elevation: 0,
-      ),
       body: SafeArea(
         top: true,
         child: Align(
@@ -89,7 +83,29 @@ class _SignUpState extends State<SignUp> {
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
+                padding: const EdgeInsets.only(left: 200, top: 20, right: 10),
+                child: Container(
+                  height: 70,
+                  child: Row(
+                    children: [
+                      Text(
+                        'VJTI Connect',
+                        style: TextStyle(
+                          fontFamily: 'Sora',
+                          color: Color(0xFF14181B),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(width: 10,
+                      height: 10,),
+                      Image(image: AssetImage('lib/images/vjtilogo.png'),),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(5, 20, 200, 0),
                 child: Container(
                   width: double.infinity,
                   height: 70,
@@ -98,12 +114,12 @@ class _SignUpState extends State<SignUp> {
                   ),
                   alignment: AlignmentDirectional(0.00, 0.00),
                   child: Text(
-                    'VJTI Connect',
+                    'Welcome!',
                     style: TextStyle(
                       fontFamily: 'Sora',
                       color: Color(0xFF14181B),
-                      fontSize: 36,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -114,11 +130,18 @@ class _SignUpState extends State<SignUp> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(20),
                     border: Border.all(
                       color: Color(0xFFF1F4F8),
                       width: 2,
                     ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey, // Shadow color
+                        blurRadius: 5, // Adjust the blur radius as needed
+                        offset: Offset(0, 0), // Adjust the offset to control shadow position
+                      ),
+                    ],
                   ),
                   child: Align(
                     alignment: AlignmentDirectional(0.00, 0.00),
@@ -129,141 +152,177 @@ class _SignUpState extends State<SignUp> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Student Login',
+                            'Sign up',
                             textAlign: TextAlign.start,
                             style: TextStyle(
-                              fontSize: 24, // Modify as needed
+                              fontSize: 30, // Modify as needed
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 12, 0, 24),
-                            child: Text(
-                              'Enter your details below to log in.',
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                fontFamily: 'Inter',
-                                color: Color(0xFF677681),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                                EdgeInsetsDirectional.fromSTEB(0, 50, 0, 16),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20.0), // You can adjust the radius as needed
+                                color: CupertinoColors.systemGrey5,
                               ),
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
-                            child: TextFormField(
-                              controller: _nameController,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                labelText: 'Student Name',
-                                // Add other properties as needed
+                              child: TextField(
+                                controller: _nameController,
+                                decoration: InputDecoration(
+                                  hintText: 'Student Name',
+                                  border: InputBorder.none, // Remove the default input border
+                                  contentPadding: EdgeInsets.symmetric(horizontal: 10.0), // Adjust padding as needed
+                                ),
                               ),
-                              // Add validator as needed
                             ),
                           ),
                           // Add other form fields similarly
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
-                            child: TextFormField(
-                              controller: _regnoController,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                labelText: 'Registration No.',
-                                // Add other properties as needed
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20.0), // You can adjust the radius as needed
+                                color: CupertinoColors.systemGrey5,
                               ),
-                              // Add validator as needed
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
-                            child: TextFormField(
-                              controller: _emailController,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                labelText: 'Email ID',
-                                // Add other properties as needed
-                              ),
-                              // Add validator as needed
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
-                            child: TextFormField(
-                              controller: _passwordController,
-                              obscureText: passwordVisibility1,
-                              decoration: InputDecoration(
-                                labelText: 'Password',
-                                // Add other properties as needed
-                                suffixIcon: InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      passwordVisibility1 =
-                                          !passwordVisibility1;
-                                    });
-                                  },
-                                  child: Icon(
-                                    passwordVisibility1
-                                        ? Icons.visibility_outlined
-                                        : Icons.visibility_off_outlined,
-                                    color: Color(0xFF677681),
-                                    size: 22,
-                                  ),
+                              child: TextField(
+                                controller: _regnoController,
+                                decoration: InputDecoration(
+                                  hintText: 'Registration no.',
+                                  border: InputBorder.none, // Remove the default input border
+                                  contentPadding: EdgeInsets.symmetric(horizontal: 10.0), // Adjust padding as needed
                                 ),
                               ),
-                              // Add validator as needed
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20.0), // You can adjust the radius as needed
+                                color: CupertinoColors.systemGrey5,
+                              ),
+                              child: TextField(
+                                controller: _emailController,
+                                decoration: InputDecoration(
+                                  hintText: 'Email ID',
+                                  border: InputBorder.none, // Remove the default input border
+                                  contentPadding: EdgeInsets.symmetric(horizontal: 10.0), // Adjust padding as needed
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20.0), // You can adjust the radius as needed
+                                color: CupertinoColors.systemGrey5,
+                              ),
+                              child: TextFormField(
+                                controller: _passwordController,
+                                obscureText: passwordVisibility1,
+                                decoration: InputDecoration(
+                                  labelText: 'Password',
+                                  border: InputBorder.none,
+                                  // Add other properties as needed
+                                  contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                                  suffixIcon: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        passwordVisibility1 =
+                                            !passwordVisibility1;
+                                      });
+                                    },
+                                    child: Icon(
+                                      passwordVisibility1
+                                          ? Icons.visibility_outlined
+                                          : Icons.visibility_off_outlined,
+                                      color: Color(0xFF677681),
+                                      size: 22,
+                                    ),
+                                  ),
+                                ),
+                                // Add validator as needed
+                              ),
                             ),
                           ),
                           // ...
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
-                            child: TextFormField(
-                              controller: _passwordController1,
-                              obscureText: passwordVisibility2,
-                              decoration: InputDecoration(
-                                labelText: 'Confirm Password',
-                                // Add other properties as needed
-                                suffixIcon: InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      passwordVisibility2 =
-                                          !passwordVisibility2;
-                                    });
-                                  },
-                                  child: Icon(
-                                    passwordVisibility2
-                                        ? Icons.visibility_outlined
-                                        : Icons.visibility_off_outlined,
-                                    color: Color(0xFF677681),
-                                    size: 22,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20.0), // You can adjust the radius as needed
+                                color: CupertinoColors.systemGrey5,
+                              ),
+                              child: TextFormField(
+                                controller: _passwordController1,
+                                obscureText: passwordVisibility2,
+                                decoration: InputDecoration(
+                                  labelText: 'Confirm Password',
+                                  border: InputBorder.none,
+                                  // Add other properties as needed
+                                  contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                                  suffixIcon: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        passwordVisibility2 =
+                                            !passwordVisibility2;
+                                      });
+                                    },
+                                    child: Icon(
+                                      passwordVisibility2
+                                          ? Icons.visibility_outlined
+                                          : Icons.visibility_off_outlined,
+                                      color: Color(0xFF677681),
+                                      size: 22,
+                                    ),
                                   ),
                                 ),
+                                // Add validator as needed
                               ),
-                              // Add validator as needed
                             ),
                           ),
                           Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                signUpUser();
-                                print('Button pressed ...');
-                              },
-                              child: !_isLoading
-                                  ? const Text(
-                                      'Sign up',
-                                    )
-                                  : const CircularProgressIndicator(
-                                      color: Colors.white,
-                                    ),
-                              // Add other button properties as needed
+                                EdgeInsetsDirectional.fromSTEB(0, 20, 0, 25),
+                            child: Container(
+                              width: double.infinity,
+                              height: 50,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  signUpUser();
+                                  print('Button pressed ...');
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  backgroundColor: Color(0xFF3D3D3D),
+                                ),
+                                child: !_isLoading
+                                    ? const Text(
+                                        'Sign up',
+                                      )
+                                    : const CircularProgressIndicator(
+                                        color: Colors.white,
+                                      ),
+                                // Add other button properties as needed
+                              ),
                             ),
+                          ),
+                          Divider(
+                            height: 1,
+                            thickness: 0.8,
+                            color: CupertinoColors.systemGrey,
+                          ),
+                          SizedBox(
+                            height: 15,
+                            width: double.infinity,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -284,7 +343,7 @@ class _SignUpState extends State<SignUp> {
                                 ),
                                 child: Container(
                                   child: const Text(
-                                    ' Login.',
+                                    ' Log in.',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),

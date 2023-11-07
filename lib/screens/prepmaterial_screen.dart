@@ -1,3 +1,4 @@
+import 'package:demo_connect/common/heading.dart';
 import 'package:demo_connect/providers/prep_material_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -48,14 +49,14 @@ class _PrepMaterialState extends State<PrepMaterial> {
     Map<String, String> preparationMaterials =
         prepMaterialProvider.getPrepMaterial;
     return Scaffold(
-      backgroundColor: const Color(0xFFF1F4F8),
+      backgroundColor: const Color(0xFF4F4F5B),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF1F4F8),
+        backgroundColor: const Color(0xFF4F4F5B),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xFF14181B),
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () {
@@ -72,31 +73,47 @@ class _PrepMaterialState extends State<PrepMaterial> {
             );
           },
         ),
-        centerTitle: true,
-        title: Text('Prep Material'),
-        titleTextStyle: TextStyle(
-          fontFamily: 'Sora',
-          color: Color(0xFF14181B),
-          fontSize: 36,
-          fontWeight: FontWeight.bold,
-        ),
         actions: [],
         elevation: 0,
       ),
-      body: ListView.builder(
-        itemCount: preparationMaterials.length,
-        itemBuilder: (BuildContext context, int index) {
-          String content = preparationMaterials.keys.elementAt(index);
-          String? link = preparationMaterials[content];
-          return ListTile(
-            title: Text(content),
-            leading: Icon(Icons.library_books),
-            trailing: link != "na" ? Icon(Icons.arrow_forward) : null,
-            onTap: () {
-              link != "na" ? _launchUrl(Uri.parse(link!)) : null;
-            },
-          );
-        },
+      body: Column(
+        children: [
+          SizedBox(height: 10,),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 80, 0),
+            child: Text(
+              'Preparation Material',
+              style: TextStyle(
+                fontFamily: 'Sora',
+                color: Colors.white,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: preparationMaterials.length,
+              itemBuilder: (BuildContext context, int index) {
+                String content = preparationMaterials.keys.elementAt(index);
+                String? link = preparationMaterials[content];
+                return ListTile(
+                  title: Text(content, style: TextStyle(
+                    color: Colors.white,
+                  ),),
+                  leading: Icon(Icons.library_books, color: Colors.white,),
+                  trailing: link != "na" ? Icon(Icons.arrow_forward, color: Colors.white,) : null,
+                  onTap: () {
+                    link != "na" ? _launchUrl(Uri.parse(link!)) : null;
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

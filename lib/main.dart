@@ -1,8 +1,10 @@
+import 'package:demo_connect/dump/test_home_screen.dart';
 import 'package:demo_connect/providers/courses_provider.dart';
 import 'package:demo_connect/providers/experience_provider.dart';
 import 'package:demo_connect/providers/prep_material_provider.dart';
 import 'package:demo_connect/providers/resume_provider.dart';
 import 'package:demo_connect/providers/tips_provider.dart';
+import 'package:demo_connect/screens/home_screen.dart';
 import 'package:demo_connect/screens/login_screen.dart';
 import 'package:demo_connect/screens/signup_screen.dart';
 import 'package:demo_connect/screens/verify_email.dart';
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        home: SignUp(),
+        home: TestHomeScreen(),
       ),
     );
   }

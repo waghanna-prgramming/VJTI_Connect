@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../widgets/domain_card.dart';
+import '../common/heading.dart';
 
 class CategoryPage extends StatefulWidget {
   final String domain, drive, title, domainID, driveID;
@@ -34,15 +35,15 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF1F4F8),
+      backgroundColor: Color(0xFF4F4F5B),
       // key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFFF1F4F8),
+        backgroundColor: Color(0xFF4F4F5B),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xFF14181B),
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () {
@@ -57,14 +58,6 @@ class _CategoryPageState extends State<CategoryPage> {
             );
           },
         ),
-        centerTitle: true,
-        title: Text(widget.title),
-        titleTextStyle: TextStyle(
-          fontFamily: 'Sora',
-          color: Color(0xFF14181B),
-          fontSize: 36,
-          fontWeight: FontWeight.bold,
-        ),
         actions: [],
         elevation: 0,
       ),
@@ -75,8 +68,12 @@ class _CategoryPageState extends State<CategoryPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
+              SizedBox(
+                height: 10,
+              ),
+              Header(heading: widget.title),
+              SizedBox(
+                height: 10,
               ),
               GestureDetector(
                 child: DomainCard(
@@ -94,9 +91,6 @@ class _CategoryPageState extends State<CategoryPage> {
                     ),
                   ),
                 ),
-              ),
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
               ),
               GestureDetector(
                 child: DomainCard(
@@ -116,9 +110,6 @@ class _CategoryPageState extends State<CategoryPage> {
                   );
                 },
               ),
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
-              ),
               GestureDetector(
                 child: DomainCard(
                   domainName: 'Preparation Material',
@@ -136,9 +127,6 @@ class _CategoryPageState extends State<CategoryPage> {
                     ),
                   );
                 },
-              ),
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
               ),
               GestureDetector(
                 child: DomainCard(
@@ -158,13 +146,6 @@ class _CategoryPageState extends State<CategoryPage> {
                   );
                 },
               ),
-              // SizedBox.fromSize(
-              //   size: Size(20.0, 15.0),
-              // ),
-              // DomainCard(domainName: 'Other Aspects'),
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
-              ),
               GestureDetector(
                 child: DomainCard(
                   domainName: 'General Tips',
@@ -182,9 +163,6 @@ class _CategoryPageState extends State<CategoryPage> {
                     ),
                   );
                 },
-              ),
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
               ),
               GestureDetector(
                 child: DomainCard(

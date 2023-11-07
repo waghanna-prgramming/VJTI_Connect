@@ -43,15 +43,15 @@ class _SelectYearResumeState extends State<SelectYearResume> {
     Map<int, Map<String, String>> dataMap = resumeProvider.getResume;
 
     return Scaffold(
-      backgroundColor: Color(0xFFF1F4F8),
+      backgroundColor: Color(0xFF4F4F5B),
       // key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFFF1F4F8),
+        backgroundColor: Color(0xFF4F4F5B),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xFF14181B),
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () {
@@ -68,50 +68,63 @@ class _SelectYearResumeState extends State<SelectYearResume> {
             );
           },
         ),
-        centerTitle: true,
-        title: Text('Select Year'),
-        titleTextStyle: TextStyle(
-          fontFamily: 'Sora',
-          color: Color(0xFF14181B),
-          fontSize: 36,
-          fontWeight: FontWeight.bold,
-        ),
         actions: [],
         elevation: 0,
       ),
-      body: ListView.builder(
-        itemCount: yearList.length,
-        itemBuilder: (context, index) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              SizedBox.fromSize(
-                size: Size(20.0, 15.0),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 100, 0),
+            child: Text(
+              'Resume Repository',
+              style: TextStyle(
+                fontFamily: 'Sora',
+                color: Colors.white,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
               ),
-              GestureDetector(
-                child: DomainCard(
-                  domainName: yearList[index].toString(),
-                ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SelectedYearPDFs(
-                          drive: widget.drive,
-                          domain: widget.domain,
-                          driveID: widget.driveID,
-                          domainID: widget.domainID,
-                          dataMap: dataMap[yearList[index]],
-                          year: yearList[index].toString(),
-                          title: widget.title),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: yearList.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    GestureDetector(
+                      child: DomainCard(
+                        domainName: yearList[index].toString(),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SelectedYearPDFs(
+                                drive: widget.drive,
+                                domain: widget.domain,
+                                driveID: widget.driveID,
+                                domainID: widget.domainID,
+                                dataMap: dataMap[yearList[index]],
+                                year: yearList[index].toString(),
+                                title: widget.title),
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
-            ],
-          );
-        },
+                  ],
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

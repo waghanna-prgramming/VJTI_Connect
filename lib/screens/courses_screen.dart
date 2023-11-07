@@ -47,14 +47,14 @@ class _ImpCoursesState extends State<ImpCourses> {
     coursesProvider = Provider.of(context);
     Map<String, String> courses = coursesProvider.getCourses;
     return Scaffold(
-      backgroundColor: const Color(0xFFF1F4F8),
+      backgroundColor: const Color(0xFF4F4F5B),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF1F4F8),
+        backgroundColor: const Color(0xFF4F4F5B),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xFF14181B),
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () {
@@ -71,31 +71,47 @@ class _ImpCoursesState extends State<ImpCourses> {
             );
           },
         ),
-        centerTitle: true,
-        title: Text('Important Courses'),
-        titleTextStyle: TextStyle(
-          fontFamily: 'Sora',
-          color: Color(0xFF14181B),
-          fontSize: 36,
-          fontWeight: FontWeight.bold,
-        ),
         actions: [],
         elevation: 0,
       ),
-      body: ListView.builder(
-        itemCount: courses.length,
-        itemBuilder: (BuildContext context, int index) {
-          String content = courses.keys.elementAt(index);
-          String? link = courses[content];
-          return ListTile(
-            title: Text(content),
-            leading: Icon(Icons.book),
-            trailing: link != "na" ? Icon(Icons.arrow_forward) : null,
-            onTap: () {
-              link != "na" ? _launchUrl(Uri.parse(link!)) : null;
-            },
-          );
-        },
+      body: Column(
+        children: [
+          SizedBox(height: 10,),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 80, 0),
+            child: Text(
+              'Important Courses',
+              style: TextStyle(
+                fontFamily: 'Sora',
+                color: Colors.white,
+                fontSize: 33,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: courses.length,
+              itemBuilder: (BuildContext context, int index) {
+                String content = courses.keys.elementAt(index);
+                String? link = courses[content];
+                return ListTile(
+                  title: Text(content, style: TextStyle(
+                    color: Colors.white,
+                  ),),
+                  leading: Icon(Icons.book, color: Colors.white,),
+                  trailing: link != "na" ? Icon(Icons.arrow_forward, color: Colors.white,) : null,
+                  onTap: () {
+                    link != "na" ? _launchUrl(Uri.parse(link!)) : null;
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

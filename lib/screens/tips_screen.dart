@@ -38,14 +38,14 @@ class _GeneralTipsState extends State<GeneralTips> {
     tipsProvider = Provider.of(context);
     List<String> tips = tipsProvider.getTips;
     return Scaffold(
-      backgroundColor: const Color(0xFFF1F4F8),
+      backgroundColor: const Color(0xFF4F4F5B),
       appBar: AppBar(
-        backgroundColor: const Color(0xFFF1F4F8),
+        backgroundColor: const Color(0xFF4F4F5B),
         automaticallyImplyLeading: false,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_rounded,
-            color: Color(0xFF14181B),
+            color: Colors.white,
             size: 30,
           ),
           onPressed: () {
@@ -62,26 +62,43 @@ class _GeneralTipsState extends State<GeneralTips> {
             );
           },
         ),
-        centerTitle: true,
-        title: Text('General Tips'),
-        titleTextStyle: TextStyle(
-          fontFamily: 'Sora',
-          color: Color(0xFF14181B),
-          fontSize: 36,
-          fontWeight: FontWeight.bold,
-        ),
         actions: [],
         elevation: 0,
       ),
-      body: ListView.builder(
-        itemCount: tips.length,
-        itemBuilder: (BuildContext context, int index) {
-          String content = tips[index];
-          return ListTile(
-            title: Text(content),
-            leading: Icon(Icons.star),
-          );
-        },
+      body: Column(
+        children: [
+          SizedBox(height: 10,),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 130, 0),
+            child: Text(
+              'General Tips',
+              style: TextStyle(
+                fontFamily: 'Sora',
+                color: Colors.white,
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: tips.length,
+              itemBuilder: (BuildContext context, int index) {
+                String content = tips[index];
+                return ListTile(
+                  title: Text(content,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),),
+                  leading: Icon(Icons.star, color: Colors.white,),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
