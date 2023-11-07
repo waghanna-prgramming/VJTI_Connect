@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CoursesProvider with ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  Map<String, String> dataMap = {};
+  Map<String, Map<String, String>> dataMap = {};
 
   fetchCourses(
       {required String drive,
@@ -22,16 +22,20 @@ class CoursesProvider with ChangeNotifier {
     dataMap.clear();
 
     for (var doc in documents) {
+      String company = doc['company'];
       String content = doc['content'];
       String link = doc['link'];
 
-      dataMap[content] = link;
+      if (!dataMap.containsKey(company)) {
+        dataMap[company] = {};
+      }
+      dataMap[company]![content] = link;
     }
 
     notifyListeners();
   }
 
-  Map<String, String> get getCourses {
+  Map<String, Map<String, String>> get getCourses {
     return dataMap;
   }
 }

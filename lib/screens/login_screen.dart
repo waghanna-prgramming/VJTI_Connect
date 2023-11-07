@@ -1,11 +1,8 @@
+import 'package:demo_connect/dump/test_home_screen.dart';
 import 'package:demo_connect/resources/auth_methods.dart';
 import 'package:demo_connect/screens/signup_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-// import 'package:js/js_util.dart';
-
-import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -41,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
       });
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => HomeScreen(),
+          builder: (context) => TestHomeScreen(),
         ),
       );
     } else {
@@ -71,8 +68,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 32),
                   child: Column(
                     children: [
-                      Image(image: AssetImage('lib/images/vjtilogo.png'),
-                      height: 200,),
+                      Image(
+                        image: AssetImage('lib/images/vjtilogo.png'),
+                        height: 200,
+                      ),
                       Container(
                         width: double.infinity,
                         height: 55,
@@ -127,15 +126,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                   EdgeInsetsDirectional.fromSTEB(0, 50, 0, 16),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20.0), // You can adjust the radius as needed
+                                  borderRadius: BorderRadius.circular(
+                                      20.0), // You can adjust the radius as needed
                                   color: CupertinoColors.systemGrey5,
                                 ),
                                 child: TextField(
                                   controller: _emailController,
                                   decoration: InputDecoration(
                                     hintText: 'Email ID',
-                                    border: InputBorder.none, // Remove the default input border
-                                    contentPadding: EdgeInsets.symmetric(horizontal: 10.0), // Adjust padding as needed
+                                    border: InputBorder
+                                        .none, // Remove the default input border
+                                    contentPadding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            10.0), // Adjust padding as needed
                                   ),
                                 ),
                               ),
@@ -146,7 +149,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   EdgeInsetsDirectional.fromSTEB(0, 0, 0, 16),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20.0), // You can adjust the radius as needed
+                                  borderRadius: BorderRadius.circular(
+                                      20.0), // You can adjust the radius as needed
                                   color: CupertinoColors.systemGrey5,
                                 ),
                                 child: TextFormField(
@@ -156,7 +160,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                       labelText: 'Password',
                                       border: InputBorder.none,
                                       // Add other properties as needed
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                                      contentPadding: EdgeInsets.symmetric(
+                                          horizontal: 10.0),
                                       suffixIcon: InkWell(
                                         onTap: () {
                                           setState(() {

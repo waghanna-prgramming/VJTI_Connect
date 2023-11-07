@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class TipsProvider with ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  Map<String, String> dataMap = {};
+  Map<String, Map<String, String>> dataMap = {};
 
   fetchTips(
       {required String drive,
@@ -21,13 +21,19 @@ class TipsProvider with ChangeNotifier {
     List<DocumentSnapshot> documents = querySnapshot.docs;
 
     for (var doc in documents) {
-      dataMap[doc['tip']] = "";
+      String company = doc['company'];
+      String tip = doc['tip'];
+
+      if (!dataMap.containsKey(company)) {
+        dataMap[company] = {};
+      }
+      dataMap[company]![tip] = "na";
     }
 
     notifyListeners();
   }
 
-  List<String> get getTips {
-    return dataMap.keys.toList();
+  Map<String, Map<String, String>> get getTips {
+    return dataMap;
   }
 }

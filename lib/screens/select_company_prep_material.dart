@@ -1,14 +1,15 @@
-import 'package:demo_connect/common/heading.dart';
 import 'package:demo_connect/providers/prep_material_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../widgets/domain_card.dart';
 import 'category_screen.dart';
+import 'list_tile_screen.dart';
 
-class PrepMaterial extends StatefulWidget {
+class SelectCompanyPrepMaterial extends StatefulWidget {
   final String domain, drive, title, domainID, driveID;
-  const PrepMaterial(
+  const SelectCompanyPrepMaterial(
       {required this.domain,
       required this.domainID,
       required this.drive,
@@ -17,10 +18,11 @@ class PrepMaterial extends StatefulWidget {
   // const PrepMaterial({Key? key}) : super(key: key);
 
   @override
-  State<PrepMaterial> createState() => _PrepMaterialState();
+  State<SelectCompanyPrepMaterial> createState() =>
+      _SelectCompanyPrepMaterialState();
 }
 
-class _PrepMaterialState extends State<PrepMaterial> {
+class _SelectCompanyPrepMaterialState extends State<SelectCompanyPrepMaterial> {
   late PrepMaterialProvider prepMaterialProvider;
 
   Future<void> _launchUrl(Uri url) async {
@@ -46,8 +48,9 @@ class _PrepMaterialState extends State<PrepMaterial> {
   @override
   Widget build(BuildContext context) {
     prepMaterialProvider = Provider.of(context);
-    Map<String, String> preparationMaterials =
+    Map<String, Map<String, String>> preparationMaterials =
         prepMaterialProvider.getPrepMaterial;
+    List<String> companyNames = preparationMaterials.keys.toList();
     return Scaffold(
       backgroundColor: const Color(0xFF4F4F5B),
       appBar: AppBar(
@@ -78,7 +81,9 @@ class _PrepMaterialState extends State<PrepMaterial> {
       ),
       body: Column(
         children: [
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Padding(
             padding: EdgeInsets.fromLTRB(20, 0, 80, 0),
             child: Text(
@@ -96,19 +101,38 @@ class _PrepMaterialState extends State<PrepMaterial> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: preparationMaterials.length,
-              itemBuilder: (BuildContext context, int index) {
-                String content = preparationMaterials.keys.elementAt(index);
-                String? link = preparationMaterials[content];
-                return ListTile(
-                  title: Text(content, style: TextStyle(
-                    color: Colors.white,
-                  ),),
-                  leading: Icon(Icons.library_books, color: Colors.white,),
-                  trailing: link != "na" ? Icon(Icons.arrow_forward, color: Colors.white,) : null,
-                  onTap: () {
-                    link != "na" ? _launchUrl(Uri.parse(link!)) : null;
-                  },
+              itemCount: companyNames.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    SizedBox.fromSize(
+                      size: const Size(20.0, 15.0),
+                    ),
+                    GestureDetector(
+                      child: DomainCard(
+                        domainName: companyNames[index],
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ListTileScreen(
+                              drive: widget.drive,
+                              domain: widget.domain,
+                              driveID: widget.driveID,
+                              domainID: widget.domainID,
+                              companyMaterial:
+                                  preparationMaterials[companyNames[index]]!,
+                              title: widget.title,
+                              titleForListTileScreen: 'Prep Material',
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 );
               },
             ),

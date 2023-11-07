@@ -1,11 +1,11 @@
-import 'package:demo_connect/screens/courses_screen.dart';
 import 'package:demo_connect/screens/domain_page.dart';
-import 'package:demo_connect/screens/prepmaterial_screen.dart';
 // import 'package:demo_connect/screens/prepmaterial_screenepo.dart';
 // import 'package:demo_connect/screens/resume_reporeen.dart';
 import 'package:demo_connect/screens/select_company.dart';
+import 'package:demo_connect/screens/select_company_general_tips.dart';
+import 'package:demo_connect/screens/select_company_imp_courses.dart';
+import 'package:demo_connect/screens/select_company_prep_material.dart';
 import 'package:demo_connect/screens/select_year_resume.dart';
-import 'package:demo_connect/screens/tips_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -118,7 +118,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PrepMaterial(
+                      builder: (context) => SelectCompanyPrepMaterial(
                           drive: widget.drive,
                           driveID: widget.driveID,
                           domain: widget.domain,
@@ -136,7 +136,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ImpCourses(
+                      builder: (context) => SelectCompanyImpCourses(
                           drive: widget.drive,
                           driveID: widget.driveID,
                           domain: widget.domain,
@@ -154,7 +154,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => GeneralTips(
+                      builder: (context) => SelectCompanyGenTips(
                           drive: widget.drive,
                           driveID: widget.driveID,
                           domain: widget.domain,
